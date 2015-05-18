@@ -15,7 +15,7 @@
  */
 
 module.exports.passport = {
-  /*local: {
+  local: {
     strategy: require('passport-local').Strategy
   },
 
@@ -23,7 +23,7 @@ module.exports.passport = {
     strategy: require('passport-http-bearer').Strategy
   },
 
-  twitter: {
+  /*twitter: {
     name: 'Twitter',
     protocol: 'oauth',
     strategy: require('passport-twitter').Strategy,
@@ -59,8 +59,9 @@ module.exports.passport = {
     protocol: 'oauth2',
     strategy: require('passport-google-oauth').OAuth2Strategy,
     options: {
-      clientID: 'your-client-id',
-      clientSecret: 'your-client-secret'
+      clientID: '843596197929-12kdh0v22q6fe406pk3t4gvfp6vaut5c.apps.googleusercontent.com',
+      clientSecret: 'AHI-_Of6n6a5O32VSDcFImKF',
+      scope: ['https://www.googleapis.com/auth/plus.login']
     }
   },
 

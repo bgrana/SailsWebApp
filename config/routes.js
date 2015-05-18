@@ -46,6 +46,10 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+
+  /***************************************************************************
+  *                               Auth routes                                *
+  ***************************************************************************/
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
   'get /register': 'AuthController.register',
@@ -56,5 +60,27 @@ module.exports.routes = {
   'get /auth/:provider': 'AuthController.provider',
   'get /auth/:provider/callback': 'AuthController.callback',
   'get /auth/:provider/:action': 'AuthController.callback',
+
+
+  /***************************************************************************
+  *                                User routes                               *
+  ***************************************************************************/
+  'get /user/:userid/profile': 'UserController.profile',
+  'get /user/:userid/friends': 'UserController.friends',
+  'get /user/:userid/scores': 'UserController.scores',
+  'get /user/:userid/favourites': 'UserController.favourites',
+  'post /user/:userid/request_friend': 'UserController.requestFriend',
+  'post /user/:userid/answer_request': 'UserController.answerRequest',
+  'get /user/:userid/ignored_requests': 'UserController.ignoredRequests',
+  'post /user/:userid/favourites': 'UserController.newFavourite',
+  'patch /user/:userid/profile': 'UserController.editProfile',
+
+  /***************************************************************************
+  *                               Place routes                               *
+  ***************************************************************************/
+  'get /place/:placeid/score': 'PlaceController.score',
+  'post /place/:placeid/score': 'PlaceController.postScore',
+  'get /place/:placeid/profile': 'PlaceController.profile',
+  'post /place/:placeid/comment': 'PlaceController.postComment',
 
 };

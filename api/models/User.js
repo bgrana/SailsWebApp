@@ -1,12 +1,37 @@
-var User = {
-  // Enforce model schema in the case of schemaless databases
-  schema: true,
+/**
+* User.js
+*
+* @description :: TODO: You might write a short summary of how this model works and what it represents here.
+* @docs        :: http://sailsjs.org/#!documentation/models
+*/
+
+module.exports = {
 
   attributes: {
-    username  : { type: 'string', unique: true },
-    email     : { type: 'email',  unique: true },
-    passports : { collection: 'Passport', via: 'user' }
+
+    username: {
+        type: 'string',
+        unique: true
+    },
+
+    firstName: {
+        type: 'string',
+        maxLength: 255
+    },
+
+    lastName : {
+        type: 'string'
+        maxLength: 255
+    },
+
+    email: {
+        type: 'email',
+        unique: true
+    },
+
+    token: {
+        type: 'string'
+    }
   }
 };
 
-module.exports = User;

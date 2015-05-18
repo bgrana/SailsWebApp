@@ -9,7 +9,7 @@
  */
 module.exports = function(req, res, next) {
 
-  if (req.user) {
+  if (req.user || req.baseUrl === '/') {
     return next();
   }
 

@@ -35,6 +35,11 @@ module.exports.session = {
   //   maxAge: 24 * 60 * 60 * 1000
   // },
 
+  // 15 days expire time
+  cookie: {
+    maxAge: 15 * 24 * 60 * 60 * 1000
+  }
+
   /***************************************************************************
   *                                                                          *
   * In production, uncomment the following lines to set up a shared redis    *
@@ -67,11 +72,11 @@ module.exports.session = {
   *                                                                          *
   ***************************************************************************/
 
-  // adapter: 'mongo',
-  // host: 'localhost',
-  // port: 27017,
-  // db: 'sails',
-  // collection: 'sessions',
+  adapter: 'mongo',
+  host: 'localhost',
+  port: 27017,
+  db: 'sails',
+  collection: 'sessions',
 
   /***************************************************************************
   *                                                                          *
