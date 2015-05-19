@@ -20,17 +20,13 @@ module.exports = {
     },
 
     lastName : {
-        type: 'string'
+        type: 'string',
         maxLength: 255
     },
 
     email: {
         type: 'email',
         unique: true
-    },
-
-    token: {
-        type: 'string'
     }
   }
 };
