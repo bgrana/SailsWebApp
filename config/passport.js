@@ -61,7 +61,10 @@ module.exports.passport = {
     options: {
       clientID: '843596197929-12kdh0v22q6fe406pk3t4gvfp6vaut5c.apps.googleusercontent.com',
       clientSecret: 'AHI-_Of6n6a5O32VSDcFImKF',
-      scope: ['https://www.googleapis.com/auth/plus.login']
+      scope: [
+        'https://www.googleapis.com/auth/plus.login',
+        'https://www.googleapis.com/auth/userinfo.email'
+      ]
     }
   },
 

@@ -164,7 +164,7 @@ var AuthController = {
         if (err) {
           return tryAgain(err);
         }
-        
+
         // Mark the session as authenticated to work with default Sails sessionAuth.js policy
         req.session.authenticated = true
         
@@ -183,6 +183,10 @@ var AuthController = {
    */
   disconnect: function (req, res) {
     passport.disconnect(req, res);
+  },
+
+  home: function (req, res) {
+    res.view('homepage', req.user);
   }
 };
 
