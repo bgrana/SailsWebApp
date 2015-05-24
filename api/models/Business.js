@@ -15,6 +15,10 @@ module.exports = {
             required: true
         },
 
+        owner: {
+            model: 'user'
+        },
+
         cif: {
             type: 'string',
             unique: true,

@@ -8,13 +8,11 @@ module.exports = {
     
     attributes: {
         user: {
-            model: 'user',
-            required: true
+            model: 'user'
         },
 
         local: {
-            model: 'local',
-            required: true
+            model: 'local'
         },
 
         message: {

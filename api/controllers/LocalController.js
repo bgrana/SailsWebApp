@@ -13,9 +13,14 @@ module.exports = {
         var location = req.param('location');
         var customForms = req.param('customForms');
         var owner = req.param('owner');
+        var userId = req.user.id;
         
         Business.find({cif: owner.cif}).exec(function (err, business) {
             if (err) return res.json(404, {error: err});
+
+            if (userId !== business.owner) {
+                return res.json(401, {error: "User not allowed to create locals in this business"});
+            }
 
             var newLocal = {
                 name: name,
@@ -48,6 +53,10 @@ module.exports = {
             Local.update({id: id}, updates).populate('owner').exec(function (err, local) {
                 if (err) return res.json(404, {error: err});
 
+                if (userId !== local.owner.owner) {
+                    return res.json(401, {error: "User not allowed to create locals in this business"});
+                }
+
                 return res.json(200, local);
             });
         }
@@ -61,7 +70,7 @@ module.exports = {
 
     postComment: function (req, res) {
         var newComment = {
-            user: req.param('userId'),
+            user: req.user.id,
             local: req.params.localid,
             message: req.param('message'),
         };
