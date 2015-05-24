@@ -66,21 +66,21 @@ module.exports.routes = {
   *                                User routes                               *
   ***************************************************************************/
   'get /user/:userid/profile': 'UserController.profile',
-  'get /user/:userid/friends': 'UserController.friends',
-  'get /user/:userid/scores': 'UserController.scores',
-  'get /user/:userid/favourites': 'UserController.favourites',
-  'post /user/:userid/request_friend': 'UserController.requestFriend',
-  'post /user/:userid/answer_request': 'UserController.answerRequest',
-  'get /user/:userid/ignored_requests': 'UserController.ignoredRequests',
-  'post /user/:userid/favourites': 'UserController.newFavourite',
   'patch /user/:userid/profile': 'UserController.editProfile',
 
   /***************************************************************************
-  *                               Place routes                               *
+  *                               Local routes                               *
   ***************************************************************************/
-  'get /place/:placeid/score': 'PlaceController.score',
-  'post /place/:placeid/score': 'PlaceController.postScore',
-  'get /place/:placeid/profile': 'PlaceController.profile',
-  'post /place/:placeid/comment': 'PlaceController.postComment',
+  'post /local': 'LocalController.create',
+  'get /local/:localid/profile': 'LocalController.profile',
+  'patch /local/:localid/profile': 'LocalController.edit',
+  'post /local/:localid/comment': 'LocalController.postComment',
+
+  /***************************************************************************
+  *                               Business routes                            *
+  ***************************************************************************/
+  'post /business/:businessid': 'BusinessController.create',
+  'get /business/:businessid/profile': 'BusinessController.profile',
+  'patch /business/:businessid/profile': 'BusinessController.edit'
 
 };
