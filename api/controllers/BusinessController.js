@@ -24,8 +24,8 @@ module.exports = {
         });
     },
 
-    profile: function (req, res) {
-        res.view('businessProfile.ejs');
+    getProfile: function (req, res) {
+        res.view('business/profile');
     },
 
     edit: function (req, res) {
@@ -48,6 +48,14 @@ module.exports = {
         }
 
         return res.json(200, {message: "No parameters were given"});
+    },
+
+    getLocals: function (req, res) {
+        Business.find(req.param.businessid).populate('locals').exec(function (err, populated) {
+            if (err) return res.json(404, {error: err});
+
+            return res.json(200, populated[0].locals);
+        });
     }
 };
 
