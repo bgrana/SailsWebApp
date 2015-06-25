@@ -63,22 +63,29 @@ module.exports.routes = {
   /***************************************************************************
   *                                User routes                               *
   ***************************************************************************/
-  'get /user/:userid/profile': 'UserController.profile',
+  'get /user/:userid/profile': 'UserController.getProfile',
   'patch /user/:userid/profile': 'UserController.editProfile',
 
   /***************************************************************************
   *                               Local routes                               *
   ***************************************************************************/
   'post /local': 'LocalController.create',
-  'get /local/:localid/profile': 'LocalController.profile',
+  'get /local/:localid/profile': 'LocalController.getProfile',
   'patch /local/:localid/profile': 'LocalController.edit',
-  'post /local/:localid/comment': 'LocalController.postComment',
 
   /***************************************************************************
-  *                               Business routes                            *
+  *                               Review routes                              *
+  ***************************************************************************/
+  'post /review': 'ReviewController.postReview',
+  'get /review': 'ReviewController.getReviews',
+  'patch /review/:reviewid': 'ReviewController.edit',
+
+  /***************************************************************************
+  *                              Business routes                             *
   ***************************************************************************/
   'post /business/:businessid': 'BusinessController.create',
-  'get /business/:businessid/profile': 'BusinessController.profile',
-  'patch /business/:businessid/profile': 'BusinessController.edit'
+  'get /business/:businessid/profile': 'BusinessController.getProfile',
+  'patch /business/:businessid/profile': 'BusinessController.edit',
+  'get /business/:businessid/locals': 'BusinessController.getLocals'
 
 };

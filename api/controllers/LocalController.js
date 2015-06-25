@@ -64,24 +64,8 @@ module.exports = {
         return res.json(200, {message: "No parameters were given"});
     },
 
-    profile: function (req, res) {
-        res.view('localProfile.ejs');
-    },
-
-    postComment: function (req, res) {
-        var newComment = {
-            user: req.user.id,
-            local: req.params.localid,
-            message: req.param('message'),
-        };
-
-        Comment.create(newComment).exec(function (err, comment) {
-            Comment.find({id: comment.id}).populateAll().exec(function (err, populated) {
-                if (err) return res.json(404, {error: err});
-
-                return res.json(200, populated);
-            });
-        });
+    getProfile: function (req, res) {
+        res.view('local/profile');
     }
 };
 

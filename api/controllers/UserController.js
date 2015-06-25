@@ -7,8 +7,8 @@
 
 module.exports = {
 	
-    profile: function (req, res) {
-        res.view('userProfile.ejs');
+    getProfile: function (req, res) {
+        res.view('user/profile');
     },
 
     editProfile: function (req, res) {

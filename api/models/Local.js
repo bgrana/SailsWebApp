@@ -40,8 +40,8 @@ module.exports = {
             via: 'local'
         },
 
-        comments: {
-            collection: 'comment',
+        reviews: {
+            collection: 'review',
             via: 'local'
         }
     }

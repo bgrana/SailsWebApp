@@ -26,8 +26,8 @@ var User = {
             required: true
         },
 
-        comments: {
-            collection: 'comment',
+        reviews: {
+            collection: 'review',
             via: 'user'
         },
 
