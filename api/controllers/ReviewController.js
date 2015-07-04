@@ -32,7 +32,7 @@ module.exports = {
 
     },
 
-    edit: function (req, res) {
+    update: function (req, res) {
         var bodyParams = req.body;
         var id = req.param.reviewid;
         var updates = {};

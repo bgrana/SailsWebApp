@@ -11,7 +11,7 @@ module.exports = {
         res.view('user/profile');
     },
 
-    editProfile: function (req, res) {
+    update: function (req, res) {
         var bodyParams = req.body;
         var id = req.param.userid;
         var updates = {};

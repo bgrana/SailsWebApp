@@ -64,28 +64,29 @@ module.exports.routes = {
   *                                User routes                               *
   ***************************************************************************/
   'get /user/:userid/profile': 'UserController.getProfile',
-  'patch /user/:userid/profile': 'UserController.editProfile',
+  'patch /user/:userid/profile': 'UserController.update',
+  'patch /user/:userid/role': 'UserController.changeRole',
 
   /***************************************************************************
   *                               Local routes                               *
   ***************************************************************************/
   'post /local': 'LocalController.create',
   'get /local/:localid/profile': 'LocalController.getProfile',
-  'patch /local/:localid/profile': 'LocalController.edit',
+  'patch /local/:localid/profile': 'LocalController.update',
 
   /***************************************************************************
   *                               Review routes                              *
   ***************************************************************************/
   'post /review': 'ReviewController.postReview',
   'get /review': 'ReviewController.getReviews',
-  'patch /review/:reviewid': 'ReviewController.edit',
+  'patch /review/:reviewid': 'ReviewController.update',
 
   /***************************************************************************
   *                              Business routes                             *
   ***************************************************************************/
   'post /business/:businessid': 'BusinessController.create',
   'get /business/:businessid/profile': 'BusinessController.getProfile',
-  'patch /business/:businessid/profile': 'BusinessController.edit',
+  'patch /business/:businessid/profile': 'BusinessController.update',
   'get /business/:businessid/locals': 'BusinessController.getLocals'
 
 };

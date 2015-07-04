@@ -28,7 +28,7 @@ module.exports = {
         res.view('business/profile');
     },
 
-    edit: function (req, res) {
+    update: function (req, res) {
         var bodyParams = req.body;
         var id = req.param.businessid;
         var updates = {};
