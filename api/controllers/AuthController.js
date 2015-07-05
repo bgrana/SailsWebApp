@@ -189,6 +189,8 @@ var AuthController = {
     res.view('homepage');
   },
 
+  admin: function (req, res) {
+    res.view('admin');
   }
 };
 

@@ -31,13 +31,15 @@ module.exports.policies = {
 
   'auth': {
     '*': ['passport'],
-    'home': ['passport', 'sessionAuth']
+    'home': ['passport', 'sessionAuth'],
+    'admin': ['isAdmin']
   },
 
   UserController: {
     create: ['passport', 'sessionAuth', 'isUser', 'isUserCreated'],
     update: ['passport', 'sessionAuth', 'isUser', 'isUserCreated'],
     destroy: ['passport', 'sessionAuth', 'isUser'],
+    changeRole: ['passport', 'sessionAuth', 'isAdmin']
   },
 
   BusinessController: {

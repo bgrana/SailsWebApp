@@ -10,6 +10,11 @@ var User = {
             required: true
         },
 
+        role: {
+            type: 'string',
+            enum: ['regular', 'provider', 'admin']
+        },
+
         firstName: {
             type: 'string',
             maxLength: 255

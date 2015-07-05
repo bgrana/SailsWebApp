@@ -58,6 +58,7 @@ module.exports.routes = {
   'get /auth/:provider/:action': 'AuthController.callback',
 
   'get /': 'AuthController.home',
+  'get /admin': 'AuthController.admin',
 
 
   /***************************************************************************

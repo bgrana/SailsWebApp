@@ -27,6 +27,16 @@ module.exports = {
         return res.json(200, {message: "No parameters were given"});
     },
 
+    changeRole: function (req, res) {
+        User.update({id: req.param('userid')}, {role: req.param('role')}).exec(function (err, user) {
+            if (err) return res.json(400, {error: err});
+
+            if (user.length === 0) return res.json(404, "User not found.");
+
+            return res.json(200, user[0]);
+        });
+    },
+
     destroy: function (req, res) {
         User.destroy(req.param('userid')).exec(function (err, found) {
             if (err || found.length === 0) return res.json(404, "User not found");
