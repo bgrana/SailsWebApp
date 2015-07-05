@@ -1,0 +1,20 @@
+  div(ng-repeat='business in admin.businesses')
+      //El ng-submit esta mal
+      form(name="editLocalForm", ng-submit="signIn(signInModel.user)", novalidate)
+      .form-group
+        label.sr-only(for='inputBusinessName') 
+          | #{ __("Business.Name") }
+        .col-sm-10
+          input#inputBusinessName.form-control(type='text', placeholder={{business.name}})
+        
+      .form-group
+        label.sr-only(for='inputBusinessCif') 
+          | #{ __("Business.Cif") }
+        .col-sm-10
+          input#inputBusinessCif.form-control(type='text', placeholder={{business.cif}})
+            
+      // Update Button
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          button.btn.btn-default(type='submit' ng-disabled="!signUpForm.$valid") 
+          | #{ __("Admin.Update") }  
