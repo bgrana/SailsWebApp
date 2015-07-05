@@ -186,7 +186,12 @@ var AuthController = {
   },
 
   home: function (req, res) {
-    res.view('homepage', req.user);
+    User.find(req.session.user).exec(function (err, user) {
+
+      if (!user || user.length === 0) return res.view('homepage');
+
+      res.view('homepage', {user: user[0]});
+    });
   }
 };
 
