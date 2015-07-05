@@ -10,17 +10,13 @@ module.exports = {
     create: function (req, res) {
         var name = req.param('name');
         var cif = req.param('cif');
-        var locals = req.params('locals');
+        var locals = req.param('locals');
         var userId = req.user.id;
 
         Business.create({name: name, cif: cif, locals: locals, owner: userId}).exec(function (err, created) {
             if (err) return res.json(400, {error: err});
             
-            Business.find({cif: created.cif}).populateAll().exec(function (err, populated) {
-                if (err) return res.json(400, {error: err});
-
-                return res.json(200, populated);
-            });
+            return res.json(200, created);
         });
     },
 
@@ -30,18 +26,14 @@ module.exports = {
 
     update: function (req, res) {
         var bodyParams = req.body;
-        var id = req.param.businessid;
-        var updates = {};
+        var id = req.param('businessid');
         var userId = req.user.id;
 
 
         if (bodyParams.length > 0) {
-            bodyParams.forEach(function (param) {
-                updates['param'] = param;
-            });
 
-            Business.update({id: id, owner: userId}, updates).exec(function (err, business) {
-                if (err) return res.json(404, {error: err});
+            Business.update({id: id, owner: userId}, bodyParams).exec(function (err, business) {
+                if (err) return res.json(400, {error: err});
 
                 return res.json(200, business);
             });
@@ -51,10 +43,18 @@ module.exports = {
     },
 
     getLocals: function (req, res) {
-        Business.find(req.param.businessid).populate('locals').exec(function (err, populated) {
+        Business.find(req.param('businessid')).populate('locals').exec(function (err, populated) {
             if (err) return res.json(404, {error: err});
 
             return res.json(200, populated[0].locals);
+        });
+    },
+
+    destroy: function (req, res) {
+        Business.destroy(req.param('businessid')).exec(function (err, found) {
+            if (err || found.length === 0) return res.json(404, "Business not found");
+
+            res.json(200, found[0]);
         });
     }
 };

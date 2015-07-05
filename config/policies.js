@@ -35,13 +35,20 @@ module.exports.policies = {
   },
 
   UserController: {
-    create: 'isUserCreated',
-    update: 'isUserCreated',
+    create: ['passport', 'sessionAuth', 'isUser', 'isUserCreated'],
+    update: ['passport', 'sessionAuth', 'isUser', 'isUserCreated'],
+    destroy: ['passport', 'sessionAuth', 'isUser'],
   },
 
   BusinessController: {
-    create: 'isBusinessCreated',
-    update: 'isBusinessCreated'
+    create: ['passport', 'sessionAuth', 'isProviderOrAdmin', 'isBusinessCreated'],
+    destroy: ['passport', 'sessionAuth', 'isBusinessOwner'],
+    update: ['passport', 'sessionAuth', 'isBusinessOwner', 'isBusinessCreated']
+  },
+
+  ReviewController: {
+    destroy: ['passport', 'sessionAuth', 'isReviewOwner'],
+    update: ['passport', 'sessionAuth', 'isReviewOwner'] 
   }
 
   /***************************************************************************

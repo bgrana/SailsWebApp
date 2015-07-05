@@ -42,20 +42,12 @@ module.exports = {
 
     update: function (req, res) {
         var bodyParams = req.body;
-        var id = req.param.localid;
-        var updates = {};
+        var id = req.param('localid');
 
         if (bodyParams.length > 0) {
-            bodyParams.forEach(function (param) {
-                updates['param'] = param;
-            });
 
-            Local.update({id: id}, updates).populate('owner').exec(function (err, local) {
-                if (err) return res.json(404, {error: err});
-
-                if (userId !== local.owner.owner) {
-                    return res.json(401, {error: "User not allowed to create locals in this business"});
-                }
+            Local.update({id: id}, bodyParams).exec(function (err, local) {
+                if (err) return res.json(400, {error: err});
 
                 return res.json(200, local);
             });
@@ -66,6 +58,14 @@ module.exports = {
 
     getProfile: function (req, res) {
         res.view('local/profile');
+    },
+
+    destroy: function (req, res) {
+        Local.destroy(req.param('localid')).exec(function (err, found) {
+            if (err || found.length === 0) return res.json(404, "Local not found");
+
+            res.json(200, found[0]);
+        });
     }
 };
 

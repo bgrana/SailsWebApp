@@ -32,8 +32,6 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'get /': 'AuthController.home',
-
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
@@ -59,6 +57,8 @@ module.exports.routes = {
   'get /auth/:provider/callback': 'AuthController.callback',
   'get /auth/:provider/:action': 'AuthController.callback',
 
+  'get /': 'AuthController.home',
+
 
   /***************************************************************************
   *                                User routes                               *
@@ -66,6 +66,7 @@ module.exports.routes = {
   'get /user/:userid': 'UserController.getProfile',
   'patch /user/:userid': 'UserController.update',
   'patch /user/:userid/role': 'UserController.changeRole',
+  'delete /user/:userid': 'UserController.destroy',
 
   /***************************************************************************
   *                               Local routes                               *
@@ -73,12 +74,14 @@ module.exports.routes = {
   'post /local': 'LocalController.create',
   'get /local/:localid': 'LocalController.getProfile',
   'patch /local/:localid': 'LocalController.update',
+  'delete /local/:localid': 'LocalController.destroy',
 
   /***************************************************************************
   *                               Review routes                              *
   ***************************************************************************/
   'post /review': 'ReviewController.postReview',
   'get /review': 'ReviewController.getReviews',
+  'delete /review': 'ReviewController.destroy',
   'patch /review/:reviewid': 'ReviewController.update',
 
   /***************************************************************************
@@ -87,6 +90,7 @@ module.exports.routes = {
   'post /business/:businessid': 'BusinessController.create',
   'get /business/:businessid': 'BusinessController.getProfile',
   'patch /business/:businessid': 'BusinessController.update',
+  'delete /business/:businessid': 'BusinessController.destroy',
   'get /business/:businessid/locals': 'BusinessController.getLocals'
 
 };
