@@ -34,6 +34,15 @@ module.exports.policies = {
     'home': ['passport', 'sessionAuth']
   },
 
+  UserController: {
+    create: 'isUserCreated',
+    update: 'isUserCreated',
+  },
+
+  BusinessController: {
+    create: 'isBusinessCreated',
+    update: 'isBusinessCreated'
+  }
 
   /***************************************************************************
   *                                                                          *
