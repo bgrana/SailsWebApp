@@ -51,10 +51,10 @@ module.exports.routes = {
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
   'get /register': 'AuthController.register',
- 
+
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',
- 
+
   'get /auth/:provider': 'AuthController.provider',
   'get /auth/:provider/callback': 'AuthController.callback',
   'get /auth/:provider/:action': 'AuthController.callback',
@@ -65,6 +65,7 @@ module.exports.routes = {
   ***************************************************************************/
   'get /user/:userid/profile': 'UserController.getProfile',
   'patch /user/:userid/profile': 'UserController.editProfile',
+
 
   /***************************************************************************
   *                               Local routes                               *
@@ -86,6 +87,15 @@ module.exports.routes = {
   'post /business/:businessid': 'BusinessController.create',
   'get /business/:businessid/profile': 'BusinessController.getProfile',
   'patch /business/:businessid/profile': 'BusinessController.edit',
-  'get /business/:businessid/locals': 'BusinessController.getLocals'
+  'get /business/:businessid/locals': 'BusinessController.getLocals',
+
+  /***************************************************************************
+  *                        Administration Panel routes                       *
+  ***************************************************************************/
+
+  //Esto tampoco funciona :(
+
+  'get /admin': 'AdminController.home'
+
 
 };

@@ -1,0 +1,27 @@
+  div(ng-repeat='local in admin.locals')
+    //El ng-submit esta mal
+    form(name="editLocalForm", ng-submit="signIn(signInModel.user)", novalidate)
+    .form-group
+      label.sr-only(for='inputLocalName') 
+        | #{ __("Local.Name") }
+      .col-sm-10
+        input#inputLocalName.form-control(type='text', placeholder={{local.name}})
+      
+    .form-group
+      label.sr-only(for='inputAddress') 
+        | #{ __("Local.Address") }
+      .col-sm-10
+        input#inputAddress.form-control(type='text', placeholder={{local.address}})
+    
+    .form-group
+      label.sr-only(for='inputLocation') 
+        | #{ __("Local.Location") }
+      .col-sm-10
+        input#inputLocation.form-control(type='json', placeholder={{local.location}})
+        
+    // Update Button
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        button.btn.btn-default(type='submit' ng-disabled="!signUpForm.$valid") 
+        | #{ __("Admin.Update") }  
+  
