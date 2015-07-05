@@ -10,7 +10,25 @@ html
     // STYLES
     // STYLES END
 
-  body
+  body(ng-app="UserModule")
+    .navbar.navbar-inverse.navbar-static-top
+      .container
+        .navbar-header
+          a.navbar-brand(href="/")
+            | #{ __("AppBrand") }
+
+        block navbar-content
+
+        if user.is_authenticated
+          .navbar-btn.btn-group.pull-right(ng-controller="AuthController")
+            if user.is_staff
+              a.btn.btn-default(href="/admin")
+                | #{ __("UserAction.GoAdminView") }
+            a.btn.btn-default(href="/settings")
+              | #{ __("UserAction.GoDetailView") }
+            button.btn.btn-default(type="button", ng-click="signOut()")
+              | #{ __("UserAction.SignOut") }
+
     block content
 
     // SCRIPTS

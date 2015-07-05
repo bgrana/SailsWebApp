@@ -1,0 +1,17 @@
+extends ../layout
+
+block title
+  | #{ __("User.SignInView.Title") }
+
+block navbar-content
+  .navbar.btn.pull-right
+    a.btn.btn-warning(href="/signup")
+      | #{ __("UserAction.SignUp") }
+
+block content
+  .container
+    .row
+      .col-sm-4.col-sm-offset-4
+        .panel.panel-default
+          .panel-body(ng-controller="AuthController")
+            include ../includes/user/signin-form.jade
