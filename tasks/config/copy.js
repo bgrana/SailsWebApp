@@ -27,7 +27,8 @@ module.exports = function(grunt) {
 				cwd: './bower_components',
 				src: [
 					'jquery/dist/jquery.js',
-					'bootstrap/dist/js/bootstrap.js'
+					'bootstrap/dist/js/bootstrap.js',
+					'angular/angular.js'
 				],
 				flatten: true,
 				dest: '.tmp/public/js/dependencies'

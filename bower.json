@@ -2,12 +2,13 @@
   "name": "wad-frontend",
   "version": "0.0.1",
   "ignore": [
-    "**/*",
+    "**/.*",
     "node_modules",
     "bower_components"
   ],
   "dependencies": {
     "bootstrap": "~3.3.4",
+    "angular": "~1.4.0",
     "font-awesome": "~4.3.0"
   }
 }
