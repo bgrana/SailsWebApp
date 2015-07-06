@@ -27,30 +27,30 @@ module.exports.policies = {
   ***************************************************************************/
 
   // '*': true,
-  '*': ['passport', 'sessionAuth'],
+  '*': ['passport', 'isAuthenticated'],
 
   'auth': {
     '*': ['passport'],
-    'home': ['passport', 'sessionAuth'],
+    'home': ['passport', 'isAuthenticated'],
     'admin': ['isAdmin']
   },
 
   UserController: {
-    create: ['passport', 'sessionAuth', 'isUser', 'isUserCreated'],
-    update: ['passport', 'sessionAuth', 'isUser', 'isUserCreated'],
-    destroy: ['passport', 'sessionAuth', 'isUser'],
-    changeRole: ['passport', 'sessionAuth', 'isAdmin']
+    create: ['passport', 'isAuthenticated', 'isUser', 'isUserCreated'],
+    update: ['passport', 'isAuthenticated', 'isUser', 'isUserCreated'],
+    destroy: ['passport', 'isAuthenticated', 'isUser'],
+    changeRole: ['passport', 'isAuthenticated', 'isAdmin']
   },
 
   BusinessController: {
-    create: ['passport', 'sessionAuth', 'isProviderOrAdmin', 'isBusinessCreated'],
-    destroy: ['passport', 'sessionAuth', 'isBusinessOwner'],
-    update: ['passport', 'sessionAuth', 'isBusinessOwner', 'isBusinessCreated']
+    create: ['passport', 'isAuthenticated', 'isProviderOrAdmin', 'isBusinessCreated'],
+    destroy: ['passport', 'isAuthenticated', 'isBusinessOwner'],
+    update: ['passport', 'isAuthenticated', 'isBusinessOwner', 'isBusinessCreated']
   },
 
   ReviewController: {
-    destroy: ['passport', 'sessionAuth', 'isReviewOwner'],
-    update: ['passport', 'sessionAuth', 'isReviewOwner'] 
+    destroy: ['passport', 'isAuthenticated', 'isReviewOwner'],
+    update: ['passport', 'isAuthenticated', 'isReviewOwner'] 
   }
 
   /***************************************************************************
