@@ -47,14 +47,14 @@ module.exports.routes = {
   *                               Auth routes                                *
   ***************************************************************************/
 
-  '/': 'UserController.home',
-  'get /signup': 'UserController.new',
+  '/': 'AuthController.home',
+  'get /signup': 'AuthController.new',
 
-  'post /signup': 'UserController.signUp',
-  'post /signin': 'UserController.signIn',
-  'get /signout': 'UserController.signOut',
+  'post /signup': 'AuthController.signUp',
+  'post /signin': 'AuthController.signIn',
+  'post /signout': 'AuthController.signOut',
 
-  'get /admin': 'AuthController.admin',
+  'get /admin': 'AdminController.list',
 
   /***************************************************************************
   *                                User routes                               *

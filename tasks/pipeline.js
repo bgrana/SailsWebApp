@@ -37,6 +37,7 @@ var jsFilesToInject = [
   // will be injected here in no particular order.
   'js/modules/user/module.js',
   'js/modules/user/controllers/**/*.js',
+  'js/modules/admin/module.js',
   'js/**/*.js'
 ];
 

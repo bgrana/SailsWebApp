@@ -19,7 +19,7 @@ html
 
         block navbar-content
 
-        if user.is_authenticated
+        if user
           .navbar-btn.btn-group.pull-right(ng-controller="AuthController")
             if user.is_staff
               a.btn.btn-default(href="/admin")

@@ -1,0 +1,17 @@
+extends ../layout
+
+block title
+  | #{ __("Admin.ListView.Title") }
+
+block content
+  .container
+    .row
+      .col-sm-6.col-sm-offset-3
+        #accordion2.accordion(ng-app="AdminModule")
+          .accordion-group(ng-controller="UserController")
+            .accordion-heading
+              a.accordion-toggle(data-toggle='collapse', data-parent='#accordion2', href='#collapseOne')
+                | #{ __("Admin.Users") }
+            #collapseOne.accordion-body.collapse.in
+              .accordion-inner
+                include ../includes/admin/userList.jade

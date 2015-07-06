@@ -2,9 +2,9 @@ form(name="signInForm", ng-submit="signIn(signInModel)", novalidate)
   .form-group
     input.form-control(
       type="text",
-      name="identifier",
+      name="username",
       placeholder=__("FormField.UsernameOrEmail"),
-      ng-model="signUpModel.identifier",
+      ng-model="signInModel.username",
       required
     )
   .form-group
@@ -12,7 +12,7 @@ form(name="signInForm", ng-submit="signIn(signInModel)", novalidate)
       type="password",
       name="password",
       placeholder=__("FormField.Password"),
-      ng-model="signUpModel.password",
+      ng-model="signInModel.password",
       required
     )
   .row.text-center

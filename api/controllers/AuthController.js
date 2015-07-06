@@ -12,14 +12,14 @@ module.exports = {
   home: function (req, res) {
 
     if (req.isAuthenticated()) {
-      return res.view();
+      return res.view('home');
     }
 
     return res.view('user/signin');
   },
 
   new: function (req, res) {
-    return res.view();
+    return res.view('user/new');
   },
 
   // ACTIONS TO PROCCESS INFO
