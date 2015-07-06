@@ -1,0 +1,21 @@
+form(name="signInForm", ng-submit="signIn(signInModel)", novalidate)
+  .form-group
+    input.form-control(
+      type="text",
+      name="identifier",
+      placeholder=__("FormField.UsernameOrEmail"),
+      ng-model="signUpModel.identifier",
+      required
+    )
+  .form-group
+    input.form-control(
+      type="password",
+      name="password",
+      placeholder=__("FormField.Password"),
+      ng-model="signUpModel.password",
+      required
+    )
+  .row.text-center
+    button.btn.btn-primary(type="submit", ng-disabled="signInForm.$invalid")
+      span
+        | #{ __("UserAction.SignIn") }
