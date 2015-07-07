@@ -42,7 +42,7 @@ module.exports.policies = {
   },
 
   BusinessController: {
-    create: ['passport', 'isAuthenticated', 'isProviderOrAdmin', 'isBusinessCreated'],
+    create: ['passport', 'isAuthenticated', 'isBusinessCreated'],
     destroy: ['passport', 'isAuthenticated', 'isBusinessOwnerOrAdmin'],
     update: ['passport', 'isAuthenticated', 'isBusinessOwnerOrAdmin', 'isBusinessCreated']
   },

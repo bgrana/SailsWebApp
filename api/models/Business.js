@@ -19,6 +19,10 @@ module.exports = {
             model: 'user'
         },
 
+        address: {
+            type: 'string'
+        },
+
         cif: {
             type: 'string',
             unique: true,

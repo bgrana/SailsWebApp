@@ -1,34 +1,14 @@
-(function(){
+// (function(){
 
-  var admin = angular.module('AdminModule', [ ]);
-  var adminModule = this;
+//   var app = angular.module('AdminModule', [ ]);
 
-  app.controller('UserController', [ '$http', function($http){
-    adminModule.users = [];
+//   app.controller('UserController', [ '$scope', '$http', function ($scope, $http) {
+//     $scope.users = [];
 
-    $http.get('/users.json').success( function(data){
-      adminModule.users = data;
-    });
+//     $http.get('/user').success( function(data){
+//       $scope.users = data;
+//     });
 
-  }]);
+//   }]);
 
-  app.controller('LocalController', [ '$http', function($http){
-    adminModule.locals = [];
-
-    $http.get('/local.json').success( function(data){
-      adminModule.locals = data;
-    });
-
-  }]);
-
-  app.controller('BusinessController', [ '$http', function($http){
-    adminModule.businesses = [];
-
-    $http.get('/business.json').success( function(data){
-      adminModule.businesses = data;
-    });
-
-  }]);
-
-
-})();
+// })();

@@ -17,7 +17,8 @@ module.exports = {
 
         name: {
             type: 'string',
-            maxLength: 255
+            maxLength: 255,
+            required: true
         },
 
         address: {
@@ -25,9 +26,14 @@ module.exports = {
             maxLength: 255
         },
 
+        category: {
+            type: 'string',
+            required: true
+        },
+
         location: {
             type: 'json',
-            required: true,
+            //required: true,
             is_location: true
         },
 

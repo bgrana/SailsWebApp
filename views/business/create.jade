@@ -1,0 +1,58 @@
+extends ../layout
+
+block title
+  | #{ __("Business.CreateView.Title") }
+
+block content
+  .container
+    .row
+        .col-sm-8.col-sm-offset-2
+          .panel.panel-default
+            .panel-body(ng-controller='BusinessController as business')
+              h3
+                strong Register your business          
+              hr
+              ul.nav.nav-pills.nav-justified
+                li(ng-class='{ active:!step1Completed, disabled:step1Completed }')
+                  a(href='#step1', ng-click='resetCreateForm()')
+                    strong Step 1:
+                    |  General information
+                li(ng-class='{ active:step1Completed, disabled:!step1Completed }', ng-click='resetStoreCreateForm()')
+                  a(href='#step2')
+                    strong Step 2:
+                    |  Search for your stores     
+              br
+              // Tab panes
+              .tab-content
+                .tab-pane(ng-class='{ active:!step1Completed }')
+                  form(name='createForm', ng-submit='createBusiness(createModel)', novalidate='')
+                    .form-group
+                      input.form-control(type='text', ng-model='createModel.name', name='name', placeholder='Legal name', required)
+                    .form-group
+                      input.form-control(type='text', ng-model='createModel.cif', name='cif', placeholder='Company CIF')
+                    .form-group
+                      input.form-control(type='text', ng-model='createModel.address', name='address', placeholder='Street address')
+                    button.btn.btn-success.pull-right(ng-disabled='createForm.$invalid', type='submit')
+                      | Next step 
+                      span.fa.fa-arrow-right
+                .tab-pane(ng-class='{ active:step1Completed }')
+                  form(name='storeCreateForm', ng-submit='createStore(storeCreateModel)', novalidate='')
+                    .form-group
+                      input.form-control(type='text', ng-model='storeCreateModel.name', name='name', placeholder='Store name', required)
+                    .form-group
+                      select.form-control(ng-model='storeCreateModel.category', name='category', required)
+                        option(value='', disabled='') Select category
+                        option(value='bar') Bar
+                        option(value='restaurant') Restaurant
+                    .form-group
+                      .input-group
+                        input.form-control(type='text', ng-model='storeCreateModel.address', placeholder='Enter a street address', required)
+                        span.input-group-btn
+                          button.btn.btn-default(type='button') Search for
+                    .text-right
+                      button.btn.btn-default(ng-disabled='storeCreateForm.$invalid', type='submit')
+                        span.fa.fa-plus-circle
+                        |  Add store
+                      button.btn.btn-success(ng-disabled='!step2Completed', type='button')
+                        | Finish 
+                        span.fa.fa-arrow-right

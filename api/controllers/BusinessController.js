@@ -10,10 +10,10 @@ module.exports = {
     create: function (req, res) {
         var name = req.param('name');
         var cif = req.param('cif');
-        var locals = req.param('locals');
+        var address = req.param('address')
         var userId = req.user.id;
 
-        Business.create({name: name, cif: cif, locals: locals, owner: userId}).exec(function (err, created) {
+        Business.create({name: name, cif: cif, address: address, owner: userId}).exec(function (err, created) {
             if (err) return res.json(400, {error: err});
             
             return res.json(200, created);
@@ -22,6 +22,10 @@ module.exports = {
 
     getProfile: function (req, res) {
         res.view('business/profile');
+    },
+
+    createView: function (req, res) {
+        res.view('business/create');
     },
 
     update: function (req, res) {
