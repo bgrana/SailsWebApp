@@ -8,6 +8,9 @@ html
       block title
 
     // STYLES
+    link(rel="stylesheet", href="/styles/bootstrap.css")
+    link(rel="stylesheet", href="/styles/font-awesome.css")
+    link(rel="stylesheet", href="/styles/importer.css")
     // STYLES END
 
   body(ng-app="UserModule")
@@ -32,4 +35,11 @@ html
     block content
 
     // SCRIPTS
+    script(src="/js/dependencies/sails.io.js")
+    script(src="/js/dependencies/jquery.js")
+    script(src="/js/dependencies/bootstrap.js")
+    script(src="/js/dependencies/angular.js")
+    script(src="/js/modules/user/module.js")
+    script(src="/js/modules/user/controllers/auth.js")
+    script(src="/js/modules/admin/module.js")
     // SCRIPTS END

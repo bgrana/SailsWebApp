@@ -1,38 +1,31 @@
-  div(ng-repeat='user in admin.users')
-    form(name="editUserForm", ng-submit="signIn(signInModel.user)", novalidate)
-      
-      .form-group
-        label.sr-only(for='inputUserName') 
-          | #{ __("FormField.Username") }
-        .col-sm-10
-          input#inputUserName.form-control(type='text', placeholder={{user.username}})
-        
-      .form-group
-        label.sr-only(for='inputFirstName')
-          | #{ __("FormField.FirstName") }
-        .col-sm-10
-          input#inputFirstName.form-control(type='text', placeholder={{user.firstName}})
-      
-      .form-group
-        label.sr-only(for='inputLastName') 
-          | #{ __("FormField.LastName") }
-        .col-sm-10
-          input#inputLastName.form-control(type='text', placeholder={{user.lirstName}})
-                  
-      .form-group
-        label.sr-only(for='inputEmail') 
-          | #{ __("FormField.Email") }
-        .col-sm-10
-          input#inputEmail.form-control(type='email', placeholder={{user.email}})
-            
-      .form-group
-        label.sr-only(for='inputStaff') 
-          | #{ __("FormField.Staff") }
-        .col-sm-10
-          input#inputStaff.form-control(type='boolean', placeholder={{user.staff}})
-            
-      // Update Button
-      .form-group
-        .col-sm-offset-2.col-sm-10
-          button.btn.btn-default(type='submit' ng-disabled="!signUpForm.$valid") 
+div(ng-repeat='user in uc.users')
+  form(name="editUserForm", ng-submit="signIn(signInModel.user)", novalidate)
+    .form-group
+      label(for='inputUserName') 
+        | #{ __("FormField.Username") }
+      .col-sm-10
+        input#inputUserName.form-control(type='text', value='{{user.username}}')
+    .form-group
+      label(for='inputFirstName')
+        | #{ __("FormField.FirstName") }
+      .col-sm-10
+        input#inputFirstName.form-control(type='text', value='{{user.firstName}}')
+    .form-group
+      label(for='inputLastName') 
+        | #{ __("FormField.LastName") }
+      .col-sm-10
+        input#inputLastName.form-control(type='text', value='{{user.lastName}}')
+    .form-group
+      label(for='inputEmail') 
+        | #{ __("FormField.Email") }
+      .col-sm-10
+        input#inputEmail.form-control(type='email', value='{{user.email}}')
+    .form-group
+      label(for='inputStaff') 
+        | #{ __("FormField.Staff") }
+      .col-sm-10
+        input#inputStaff.form-control(type='boolean', value='{{user.is_staff}}')
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        button.btn.btn-default(type='submit' ng-disabled="!signUpForm.$valid") 
           | #{ __("Admin.Update") }

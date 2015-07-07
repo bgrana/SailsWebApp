@@ -1,34 +1,32 @@
 (function(){
 
-  var admin = angular.module('AdminModule', [ ]);
-  var adminModule = this;
+  var app = angular.module('AdminModule', []);
 
-  app.controller('UserController', [ '$http', function($http){
-    adminModule.users = [];
+  app.controller('UserController', [ '$scope', '$http',  function($scope , $http){
+    var admin = this;
+    admin.users = [];
 
-    $http.get('/users.json').success( function(data){
-      adminModule.users = data;
+    $http.get('/user').success( function(data){
+      admin.users = data;
     });
-
   }]);
 
-  app.controller('LocalController', [ '$http', function($http){
-    adminModule.locals = [];
+  app.controller('LocalController', [ '$scope', '$http', function($scope , $http){
+    var admin = this;
+    admin.locals = [];
 
-    $http.get('/local.json').success( function(data){
-      adminModule.locals = data;
+    $http.get('/local').success( function(data){
+      admin.locals = data;
     });
-
   }]);
 
-  app.controller('BusinessController', [ '$http', function($http){
-    adminModule.businesses = [];
+  app.controller('BusinessController', [ '$scope', '$http', function($scope , $http){
+    var admin = this;
+    admin.businesses = [];
 
-    $http.get('/business.json').success( function(data){
-      adminModule.businesses = data;
+    $http.get('/business').success( function(data){
+      admin.businesses = data;
     });
-
   }]);
-
 
 })();

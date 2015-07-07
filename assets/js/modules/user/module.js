@@ -1,2 +1,5 @@
+(function(){
 
-angular.module('UserModule', []);
+  var app = angular.module('UserModule', ['AdminModule']);
+
+})();
