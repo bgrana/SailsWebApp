@@ -11,14 +11,16 @@ module.exports = {
         var name = req.param('name');
         var address = req.param('address');
         var location = req.param('location');
-        var customForms = req.param('customForms');
         var owner = req.param('owner');
+        var category = req.param('category');
         var userId = req.user.id;
+        console.log("OWNER: " + JSON.stringify(owner));
         
-        Business.find({cif: owner.cif}).exec(function (err, business) {
+        Business.find({cif: owner.cif}).populate('owner').exec(function (err, business) {
             if (err) return res.json(404, {error: err});
 
-            if (userId !== business.owner) {
+            console.log("BUSINESS OWNER: " + JSON.stringify(business));
+            if (userId !== owner.owner) {
                 return res.json(401, {error: "User not allowed to create locals in this business"});
             }
 
@@ -26,16 +28,14 @@ module.exports = {
                 name: name,
                 address: address,
                 location: location,
-                customForms: customForms,
-                owner: business.id
+                category: category,
+                owner: owner.id
             };
 
             Local.create(newLocal).exec(function (err, local) {
-                Local.find({id: local.id}).populate('owner').exec(function (err, populated) {
-                    if (err) return res.json(400, {error: err});
+                if (err) return res.json(400, {error: err});
 
-                    return res.json(200, populated);
-                });
+                return res.json(200, local);
             });
         });
     },

@@ -41,11 +41,6 @@ module.exports = {
             model: 'business'
         },
 
-        customForms: {
-            collection: 'customForm',
-            via: 'local'
-        },
-
         reviews: {
             collection: 'review',
             via: 'local'

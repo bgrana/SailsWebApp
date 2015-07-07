@@ -17,13 +17,14 @@
                         $scope.step1Completed = true;
                     })
                     .error(function (validationError) {
+                        console.log(validationError);
                     });
 
             };
 
             $scope.createStore = function (store) {
 
-                store.owner = $scope.business.id;
+                store.owner = $scope.business;
                 $http
                     .post('/local', store)
                     .success(function (data) {
@@ -31,6 +32,7 @@
                         $scope.step2Completed = true;
                     })
                     .error(function (validationError) {
+                        console.log(validationError);
                     });
 
             };
