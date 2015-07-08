@@ -16,7 +16,7 @@ block content
               a.list-group-item(href='#', ng-class='{ active: store.active }', ng-click='showStore($index)', ng-repeat='store in stores')
                 h4.list-group-item-heading
                   span.fa.fa-map-marker
-                  |  {{ store.title }}
+                  |  {{ store.name }}
                 p.list-group-item-text {{ store.address }}
             .alert.alert-info(ng-if='stores.length == 0')
               strong Heads up!
