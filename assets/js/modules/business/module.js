@@ -37,6 +37,10 @@
 
             };
 
+            $scope.goDetailView = function () {
+              window.location = "/business/" + $scope.business.id; 
+            };
+
             $scope.resetCreateForm = function () {
                 $scope.createModel = {};
             };

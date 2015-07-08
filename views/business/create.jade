@@ -53,6 +53,6 @@ block content
                       button.btn.btn-default(ng-disabled='storeCreateForm.$invalid', type='submit')
                         span.fa.fa-plus-circle
                         |  Add store
-                      button.btn.btn-success(ng-disabled='!step2Completed', type='button')
+                      button.btn.btn-success(ng-disabled='!step2Completed', ng-click="goDetailView()", type='button')
                         | Finish 
                         span.fa.fa-arrow-right
