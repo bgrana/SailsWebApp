@@ -1,3 +1,12 @@
+#accordionDelete.panel-group(role='tablist', aria-multiselectable='true')
+.panel.panel-default
+  #headingDelete.panel-heading(role='tab')
+    h4.panel-title
+      a(role='button', data-toggle='collapse', data-parent='#accordionDelete', href='#collapseDelete', aria-expanded='false', aria-controls='collapseDelete')
+        | #{ __("Admin.NewUser") }
+  #collapseDelete.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingDelete')
+    .panel-body(ng-controller='UserController as uc')
+      include ./addUserForm.jade
 div(ng-repeat='user in uc.users').col-sm-7
   #accordionUser.panel-group(role='tablist', aria-multiselectable='true')
   .panel.panel-default
@@ -9,7 +18,7 @@ div(ng-repeat='user in uc.users').col-sm-7
         .panel-body
           form(name="editUserForm", ng-submit="updateUser(user)", novalidate)
             .form-group
-              label(for='inputUserName') 
+              label( for='inputUserName') 
                 | #{ __("FormField.Username") }
               .col-sm-10
                 input#inputUserName.form-control(
@@ -61,4 +70,7 @@ div(ng-repeat='user in uc.users').col-sm-7
             .form-group
               .col-sm-offset-2.col-sm-5
                 button.btn.btn-default(type='submit' ng-disabled="!editUserForm.$valid") 
+                  | #{ __("Admin.Update") }
+              .col-sm-offset-2.col-sm-5
+                button.btn.btn-default(ng-click="deleteUser(user)" ng-disabled="!editUserForm.$valid") 
                   | #{ __("Admin.Update") }

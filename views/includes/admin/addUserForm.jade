@@ -1,0 +1,55 @@
+form(name="editUserForm", ng-submit="createUser(user)", novalidate)
+  .form-group
+    label( for='inputUserName') 
+      | #{ __("FormField.Username") }
+    .col-sm-10
+      input#inputUserName.form-control(
+        type='text',
+        ng-model='user.username',
+        value='{{user.username}}',
+        required
+      )
+  .form-group
+    label(for='inputFirstName')
+      | #{ __("FormField.FirstName") }
+    .col-sm-10
+      input#inputFirstName.form-control(
+        type='text',
+        value='{{user.firstName}}',
+        ng-model="user.firstName",
+        required
+      )
+  .form-group
+    label(for='inputLastName') 
+      | #{ __("FormField.LastName") }
+    .col-sm-10
+      input#inputLastName.form-control(
+        type='text', 
+        value='{{user.lastName}}',
+        ng-model="user.lastName",
+        required
+      )
+  .form-group
+    label(for='inputEmail') 
+      | #{ __("FormField.Email") }
+    .col-sm-10
+      input#inputEmail.form-control(
+        type='email', 
+        value='{{user.email}}',
+        ng-model="user.email",
+        required
+      )
+  .form-group
+    label(for='inputStaff') 
+      | #{ __("FormField.Staff") }
+    .col-sm-10
+      input#inputStaff.form-control(
+        type='boolean',
+        value='{{user.is_staff}}',
+        ng-model="user.is_staff",
+        required
+      )
+  .form-group
+    .col-sm-offset-2.col-sm-5
+      button.btn.btn-default(type='submit' ng-disabled="!editUserForm.$valid") 
+        | #{ __("Admin.Create") }

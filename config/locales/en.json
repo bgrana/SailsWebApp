@@ -21,6 +21,7 @@
   "Admin.Locals": "Locals",
   "Admin.Business": "Business",
   "Admin.Update": "Update",
+	"Admin.NewUser": "Add User",
   "Local.Name": "Name",
   "Local.Address": "Address",
   "Local.Location": "Location",
@@ -29,5 +30,6 @@
   "UserAction.SignIn": "Sign In",
   "UserAction.SignOut": "Sign Out",
 	"User.Email": "Email",
-	"User.Username": "Username"
+	"User.Username": "Username",
+	"UserAction.GoDetailView": "Profile"
 }
