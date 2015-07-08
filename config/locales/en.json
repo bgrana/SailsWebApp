@@ -27,5 +27,7 @@
   "Business.Name": "Name",
   "Business.Cif": "CIF",
   "UserAction.SignIn": "Sign In",
-  "UserAction.SignOut": "Sign Out"
+  "UserAction.SignOut": "Sign Out",
+	"User.Email": "Email",
+	"User.Username": "Username"
 }

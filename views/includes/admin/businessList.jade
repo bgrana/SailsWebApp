@@ -1,16 +1,34 @@
 div(ng-repeat='business in bc.businesses')
-  form(name="editLocalForm", ng-submit="signIn(signInModel.user)", novalidate)
-    .form-group
-      label.sr-only(for='inputBusinessName') 
-        | #{ __("Business.Name") }
-      .col-sm-10
-        input#inputBusinessName.form-control(type='text' , value='{{business.name}}')
-    .form-group
-      label.sr-only(for='inputBusinessCif') 
-        | #{ __("Business.Cif") }
-      .col-sm-10
-        input#inputBusinessCif.form-control(type='text', value='{{business.cif}}')
-    .form-group
-      .col-sm-offset-2.col-sm-10
-        button.btn.btn-default(type='submit' ng-disabled="!signUpForm.$valid") 
-        | #{ __("Admin.Update") }  
+  #accordionBusiness.panel-group(role='tablist', aria-multiselectable='true')
+  .panel.panel-default
+    #headingOne.panel-heading(role='tab')
+      h4.panel-title
+        a(role='button', data-toggle='collapse', data-parent='#accordionBusiness', href='#collapse{{$index}}', aria-expanded='false', aria-controls='collapse{{$index}}')
+          | #{ __("Business.Cif") }: {{business.cif}}, #{ __("Business.Name") }: {{business.name}}
+    div(id='collapse{{$index}}').panel-collapse.collapse(role='tabpanel', aria-labelledby='headingOne')
+        .panel-body
+            form(name="editLocalForm", ng-submit="updateBusiness(business)", novalidate)
+              .form-group
+                label(for='inputBusinessName') 
+                  | #{ __("Business.Name") }
+                .col-sm-10
+                  input#inputBusinessName.form-control(
+                    type='text', 
+                    value='{{business.name}}',
+                    ng-model="businessModel.name",
+                    required
+                  )
+              .form-group
+                label(for='inputBusinessCif') 
+                  | #{ __("Business.Cif") }
+                .col-sm-10
+                  input#inputBusinessCif.form-control(
+                    type='text', 
+                    value='{{business.cif}}',
+                    ng-model="businessModel.cif",
+                    required
+                  )
+              .form-group
+                .col-sm-offset-2.col-sm-10
+                  button.btn.btn-default(type='submit' ng-disabled="!editLocalForm.$valid") 
+                  | #{ __("Admin.Update") } 

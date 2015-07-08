@@ -7,26 +7,26 @@ block content
   div
     #accordion.panel-group(role='tablist', aria-multiselectable='true')
     .panel.panel-default
-      #headingOne.panel-heading(role='tab')
+      #headingUsers.panel-heading(role='tab')
         h4.panel-title
           a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseUsers', aria-expanded='false', aria-controls='collapseUsers')
             | #{ __("Admin.Users") }
-      #collapseUsers.panel-collapse.collapse.in(role='tabpanel', aria-labelledby='headingOne')
+      #collapseUsers.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingUsers')
         .panel-body(ng-controller='UserController as uc')
           include ../includes/admin/userList.jade      
     .panel.panel-default
-      #headingTwo.panel-heading(role='tab')
+      #headingLocals.panel-heading(role='tab')
         h4.panel-title
           a.collapsed(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseLocals', aria-expanded='false', aria-controls='collapseLocals')
             | #{ __("Admin.Locals") }
-      #collapseLocals.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingTwo')
+      #collapseLocals.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingLocals')
         .panel-body(ng-controller='LocalController as lc')
           include ../includes/admin/localList.jade      
     .panel.panel-default
-      #headingThree.panel-heading(role='tab')
+      #headingBusinesses.panel-heading(role='tab')
         h4.panel-title
-          a.collapsed(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseBussinesses', aria-expanded='false', aria-controls='collapseBussinesses')
+          a.collapsed(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseBusinesses', aria-expanded='false', aria-controls='collapseBusinesses')
             | #{ __("Admin.Business") }
-      #collapseBussinesses.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingThree')
+      #collapseBusinesses.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingBusinesses')
         .panel-body(ng-controller='BusinessController as bc')
           include ../includes/admin/businessList.jade

@@ -27,5 +27,7 @@
   "Business.Name": "Nombre",
   "Business.Cif": "CIF",
   "UserAction.SignIn": "Iniciar sesión",
-  "UserAction.SignOut": "Cerrar sesión"
+  "UserAction.SignOut": "Cerrar sesión",
+  "User.Email": "Email",
+  "User.Username": "Nombre de Usuario"
 }

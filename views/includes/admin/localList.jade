@@ -1,18 +1,36 @@
 div(ng-repeat='local in lc.locals')
-  form(name="editLocalForm", ng-submit="signIn(signInModel.user)", novalidate)
-    .form-group
-      label.sr-only(for='inputLocalName') 
-        | #{ __("Local.Name") }
-      .col-sm-10
-        input#inputLocalName.form-control(type='text', value='{{local.name}}')
-    .form-group
-      label.sr-only(for='inputAddress') 
-        | #{ __("Local.Address") }
-      .col-sm-10
-        input#inputAddress.form-control(type='text',value='{{local.address}}')
-    // Update Button
-    .form-group
-      .col-sm-offset-2.col-sm-10
-        button.btn.btn-default(type='submit' ng-disabled="!signUpForm.$valid") 
-        | #{ __("Admin.Update") }  
+  #accordionLocal.panel-group(role='tablist', aria-multiselectable='true')
+  .panel.panel-default
+    #headingOne.panel-heading(role='tab')
+      h4.panel-title
+        a(role='button', data-toggle='collapse', data-parent='#accordionLocal', href='#collapse{{$index}}', aria-expanded='false', aria-controls='collapse{{$index}}')
+          | #{ __("Local.Name") }: {{local.name}}, #{ __("Local.Address") }: {{local.address}}
+    div(id='collapse{{$index}}').panel-collapse.collapse(role='tabpanel', aria-labelledby='headingOne')
+        .panel-body
+          form(name="editLocalForm", ng-submit="updateLocal(local)", novalidate)
+            .form-group
+              label(for='inputLocalName') 
+                | #{ __("Local.Name") }
+              .col-sm-10
+                input#inputLocalName.form-control(
+                  type='text', 
+                  value='{{local.name}}',
+                  ng-model="local.name",
+                  required
+                )
+            .form-group
+              label(for='inputAddress') 
+                | #{ __("Local.Address") }
+              .col-sm-10
+                input#inputAddress.form-control(
+                  type='text',
+                  value='{{local.address}}',
+                  ng-model="local.address",
+                  required
+                )
+            // Update Button
+            .form-group
+              .col-sm-offset-2.col-sm-10
+                button.btn.btn-default(type='submit' ng-disabled="!editLocalForm.$valid") 
+                | #{ __("Admin.Update") }  
   
