@@ -1,5 +1,5 @@
 #accordionDelete.panel-group(role='tablist', aria-multiselectable='true')
-.panel.panel-default
+.panel.panel-success
   #headingDelete.panel-heading(role='tab')
     h4.panel-title
       a(role='button', data-toggle='collapse', data-parent='#accordionDelete', href='#collapseDelete', aria-expanded='false', aria-controls='collapseDelete')
@@ -7,7 +7,7 @@
   #collapseDelete.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingDelete')
     .panel-body(ng-controller='UserController as uc')
       include ./addUserForm.jade
-div(ng-repeat='user in uc.users').col-sm-7
+div(ng-repeat='user in uc.users').col-sm-12
   #accordionUser.panel-group(role='tablist', aria-multiselectable='true')
   .panel.panel-default
     #headingOne.panel-heading(role='tab')
@@ -68,9 +68,11 @@ div(ng-repeat='user in uc.users').col-sm-7
                   required
                 )
             .form-group
-              .col-sm-offset-2.col-sm-5
-                button.btn.btn-default(type='submit' ng-disabled="!editUserForm.$valid") 
+              .col-sm-offset-2.col-sm-8
+                button.btn.btn-success(type='submit' ng-disabled="!editUserForm.$valid") 
                   | #{ __("Admin.Update") }
-              .col-sm-offset-2.col-sm-5
-                button.btn.btn-default(ng-click="deleteUser(user)" ng-disabled="!editUserForm.$valid") 
-                  | #{ __("Admin.Update") }
+                button.btn.btn-danger(type='button' ng-click="destroyUser(user)")
+                  span.fa.fa-trash
+                  |  #{ __("Admin.Delete") }
+              
+                

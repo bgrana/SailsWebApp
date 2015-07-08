@@ -22,6 +22,7 @@
   "Admin.Business": "Business",
   "Admin.Update": "Update",
 	"Admin.NewUser": "Add User",
+	"Admin.Delete": "Delete",
   "Local.Name": "Name",
   "Local.Address": "Address",
   "Local.Location": "Location",
