@@ -31,6 +31,7 @@ var jsFilesToInject = [
   'js/dependencies/jquery.js',
   'js/dependencies/bootstrap.js',
   'js/dependencies/angular.js',
+  'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDxIc0QYlJ3ktyic72uAKFKTFbzKd5Cmo8&signed_in=false&sensor=true&libraries=places',
   'js/dependencies/**/*.js',
 
   // All of the rest of your client-side js files

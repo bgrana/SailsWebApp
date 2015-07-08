@@ -9,7 +9,7 @@ module.exports = {
 
     types: {
         is_location: function (location) {
-            return location.x && location.y;
+            return location.lat && location.long;
         }
     },
 

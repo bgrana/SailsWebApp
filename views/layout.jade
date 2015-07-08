@@ -11,6 +11,7 @@ html
     link(rel="stylesheet", href="/styles/bootstrap.css")
     link(rel="stylesheet", href="/styles/font-awesome.css")
     link(rel="stylesheet", href="/styles/importer.css")
+    link(rel="stylesheet", href="/styles/mapStyles.css")
     // STYLES END
 
   body(ng-app="UserModule")
@@ -34,12 +35,14 @@ html
 
     block content
 
+    script(src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDxIc0QYlJ3ktyic72uAKFKTFbzKd5Cmo8&signed_in=false&sensor=true&libraries=places")
     // SCRIPTS
     script(src="/js/dependencies/sails.io.js")
     script(src="/js/dependencies/jquery.js")
     script(src="/js/dependencies/bootstrap.js")
     script(src="/js/dependencies/angular.js")
     script(src="/js/modules/user/module.js")
+    script(src="/js/maps.js")
     script(src="/js/modules/admin/module.js")
     script(src="/js/modules/business/module.js")
     // SCRIPTS END
