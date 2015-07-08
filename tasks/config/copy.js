@@ -28,7 +28,9 @@ module.exports = function(grunt) {
 				src: [
 					'jquery/dist/jquery.js',
 					'bootstrap/dist/js/bootstrap.js',
-					'angular/angular.js'
+					'angular/angular.js',
+					'lodash/lodash.js',
+					'angular-google-maps/dist/angular-google-maps.js'
 				],
 				flatten: true,
 				dest: '.tmp/public/js/dependencies'

@@ -13,7 +13,7 @@ var Maps = (function () {
             zoom: 10
         };
 
-        this.map = new google.maps.Map(document.getElementById(mapContainer),
+        this.map = new google.maps.Map(this.mapContainer,
         mapOptions);
 
         var defaultBounds = new google.maps.LatLngBounds(
@@ -22,7 +22,7 @@ var Maps = (function () {
         this.map.fitBounds(defaultBounds);
 
         // Create the search box and link it to the UI element.
-        var input = (document.getElementById(this.searchContainer));
+        var input = (this.searchContainer);
         this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
         this.searchBox = new google.maps.places.SearchBox(
@@ -55,7 +55,7 @@ var Maps = (function () {
 
                 // Create a marker for each place.
                 var marker = new google.maps.Marker({
-                    map: map,
+                    map: this.map,
                     icon: image,
                     title: place.name,
                     position: place.geometry.location,
@@ -71,12 +71,12 @@ var Maps = (function () {
             }
 
             this.map.fitBounds(bounds);
-        });
+        }.bind(this));
 
-        google.maps.event.addListener(map, 'bounds_changed', function() {
+        google.maps.event.addListener(this.map, 'bounds_changed', function() {
             var bounds = this.map.getBounds();
-            this.this.searchBox.setBounds(bounds);
-        });
+            this.searchBox.setBounds(bounds);
+        }.bind(this));
 
         return this;
 

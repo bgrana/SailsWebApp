@@ -83,11 +83,11 @@ module.exports.routes = {
   /***************************************************************************
   *                              Business routes                             *
   ***************************************************************************/
+  'get /business/create': 'BusinessController.createView',
   'post /business/:businessid': 'BusinessController.create',
-  //'get /business/:businessid': 'BusinessController.getProfile',
+  'get /business/:businessid': 'BusinessController.getProfile',
   'patch /business/:businessid': 'BusinessController.update',
   'delete /business/:businessid': 'BusinessController.destroy',
-  'get /business/:businessid/locals': 'BusinessController.getLocals',
-  'get /business/create': 'BusinessController.createView'
+  'get /business/:businessid/locals': 'BusinessController.getLocals'
 
 };

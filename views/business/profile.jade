@@ -1,0 +1,46 @@
+extends ../layout
+
+block title
+  | #{ __("Business.ListView.Title") }
+
+block content
+  .container(ng-controller='BusinessListController as businessList', data-id='#{ business.id }')
+    .row
+      .col-sm-4
+        .panel.panel-default
+          .panel-body
+            h3
+              strong List of stores
+            hr
+            .list-group
+              a.list-group-item(href='#', ng-class='{ active: store.active }', ng-click='showStore($index)', ng-repeat='store in stores')
+                h4.list-group-item-heading
+                  span.fa.fa-map-marker
+                  |  {{ store.title }}
+                p.list-group-item-text {{ store.address }}
+            .alert.alert-info(ng-if='stores.length == 0')
+              strong Heads up!
+              |  This business has not any stores.
+      .col-sm-8
+        .panel.panel-default
+          .panel-body
+            h3
+              strong General information
+            hr
+            dl.dl-horizontal
+              dt Legal name
+              dd(ng-bind='business.name')
+              dt Street address
+              dd(ng-bind='business.address')
+        .panel.panel-default(ng-show='store.active', ng-repeat='store in stores')
+          .panel-body
+            h3
+              strong Store
+            hr
+            dl.dl-horizontal
+              dt Name
+              dd {{ store.name }}
+              dt Address
+              dd {{ store.address }}
+              dt Category
+              dd {{ store.category }}

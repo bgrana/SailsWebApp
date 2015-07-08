@@ -6,10 +6,6 @@
             $scope.createModel = {};
             $scope.storeCreateModel = {};
             $scope.step2Completed = false;
-            var mapContainer = document.getElementById('map-container');
-            var searchContainer = document.getElementById('search-container');
-            var maps = new Maps(mapContainer, searchContainer);
-            maps.create();
 
             $scope.createBusiness = function (business) {
 
@@ -29,7 +25,6 @@
             $scope.createStore = function (store) {
 
                 store.owner = $scope.business;
-                store.location = maps.getCoords();
                 $http
                     .post('/local', store)
                     .success(function (data) {
@@ -51,4 +46,30 @@
             };
 
         }]);
+
+    app.controller('BusinessListController', ['$scope', '$http', '$element', '$interpolate', function ($scope, $http, $element, $interpolate) {
+
+        $scope.businessId = $element.attr('data-id');
+
+        $http.get('/business/' + $scope.businessId)
+            .success(function(data) {
+                $scope.business = data;
+
+                data.locals.forEach(function (store, index) {
+                    store.active = index == 0;
+                });
+                $scope.stores = data.locals;
+            })
+            .error(function(data) {
+            });
+
+        $scope.showStore = function ($index) {
+            $scope.stores.forEach(function (store, index) {
+                store.active = index == $index;
+            });
+        };
+
+    }]);
+
+
 })();

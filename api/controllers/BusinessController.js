@@ -21,7 +21,19 @@ module.exports = {
     },
 
     getProfile: function (req, res) {
-        res.view('business/profile');
+        var businessid = req.param('businessid');
+
+        Business.findOne({id: businessid}).populate('locals').exec(function (err, business) {
+
+          if (err) return res.notFound();
+
+          if (req.wantsJSON) {
+            return res.jsonx(business);
+          }
+          else {
+            res.view('business/profile', {business: business});
+          }
+        });
     },
 
     createView: function (req, res) {

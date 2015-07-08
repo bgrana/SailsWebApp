@@ -45,8 +45,10 @@ block content
                         option(value='bar') Bar
                         option(value='restaurant') Restaurant
                     .form-group
-                        input.map-input(id="search-container", type='text', ng-model='storeCreateModel.address', placeholder='Enter a street address', required)
-                        div.map-container(id="map-container")
+                      input.map-input(id="search-container", type='text', ng-model='storeCreateModel.address', placeholder='Enter a street address', required)
+                    //ui-gmap-google-map(center="map.center", zoom="map.zoom", draggable="true")
+                    //  ui-gmap-search-box()
+                    //  ui-gmap-marker(coords="marker.coords", options="marker.options", events="marker.events", idkey="marker.id")
                     .text-right
                       button.btn.btn-default(ng-disabled='storeCreateForm.$invalid', type='submit')
                         span.fa.fa-plus-circle
