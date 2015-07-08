@@ -2,7 +2,7 @@
     var app = angular.module('BusinessModule', ['uiGmapgoogle-maps']);
 
     app.controller('BusinessController', ['$scope', '$http', '$element', '$interpolate', function ($scope, $http, $element, $interpolate) {
-            $scope.step1Completed = true;
+            $scope.step1Completed = false;
             $scope.createModel = {};
             $scope.storeCreateModel = {};
             $scope.step2Completed = false;

@@ -1,12 +1,11 @@
-form(name="editUserForm", ng-submit="createUser(user)", novalidate)
+form(name="editUserForm", ng-submit="createUser(userCreateModel)", novalidate)
   .form-group
     label( for='inputUserName') 
       | #{ __("FormField.Username") }
     .col-sm-10
       input#inputUserName.form-control(
         type='text',
-        ng-model='user.username',
-        value='{{user.username}}',
+        ng-model='userCreateModel.username',
         required
       )
   .form-group
@@ -15,8 +14,7 @@ form(name="editUserForm", ng-submit="createUser(user)", novalidate)
     .col-sm-10
       input#inputFirstName.form-control(
         type='text',
-        value='{{user.firstName}}',
-        ng-model="user.firstName",
+        ng-model="userCreateModel.firstName",
         required
       )
   .form-group
@@ -24,9 +22,8 @@ form(name="editUserForm", ng-submit="createUser(user)", novalidate)
       | #{ __("FormField.LastName") }
     .col-sm-10
       input#inputLastName.form-control(
-        type='text', 
-        value='{{user.lastName}}',
-        ng-model="user.lastName",
+        type='text',
+        ng-model="userCreateModel.lastName",
         required
       )
   .form-group
@@ -34,9 +31,8 @@ form(name="editUserForm", ng-submit="createUser(user)", novalidate)
       | #{ __("FormField.Email") }
     .col-sm-10
       input#inputEmail.form-control(
-        type='email', 
-        value='{{user.email}}',
-        ng-model="user.email",
+        type='email',
+        ng-model="userCreateModel.email",
         required
       )
   .form-group
@@ -45,8 +41,16 @@ form(name="editUserForm", ng-submit="createUser(user)", novalidate)
     .col-sm-10
       input#inputStaff.form-control(
         type='boolean',
-        value='{{user.is_staff}}',
-        ng-model="user.is_staff",
+        ng-model="userCreateModel.is_staff",
+        required
+      )
+  .form-group
+    label(for='inputPassword') 
+      | #{ __("FormField.Password") }
+    .col-sm-10
+      input#inputStaff.form-control(
+        type='password',
+        ng-model="userCreateModel.password",
         required
       )
   .form-group

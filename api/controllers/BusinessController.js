@@ -46,16 +46,15 @@ module.exports = {
         var userId = req.user.id;
 
 
-        if (bodyParams.length > 0) {
-
-            Business.update({id: id, owner: userId}, bodyParams).exec(function (err, business) {
-                if (err) return res.json(400, {error: err});
-
-                return res.json(200, business);
-            });
+        if (bodyParams.length === 0) {
+            return res.json(200, {message: "No parameters were given"});
         }
 
-        return res.json(200, {message: "No parameters were given"});
+        Business.update({id: id, owner: userId}, bodyParams).exec(function (err, business) {
+            if (err || business.length === 0) return res.json(400, {error: err});
+
+            return res.json(200, business[0]);
+        });
     },
 
     getLocals: function (req, res) {

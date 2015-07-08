@@ -12,7 +12,6 @@ html
     link(rel="stylesheet", href="/styles/font-awesome.css")
     link(rel="stylesheet", href="/styles/importer.css")
     link(rel="stylesheet", href="/styles/mapStyles.css")
-
     // STYLES END
 
     // TEMPLATES
@@ -33,7 +32,7 @@ html
             if !user.is_staff
               a.btn.btn-default(href="/admin")
                 | #{ __("UserAction.GoAdminView") }
-            a.btn.btn-default(href="/settings")
+            a.btn.btn-default(href="/user/#{user.id}")
               | #{ __("UserAction.GoDetailView") }
             button.btn.btn-default(type="button", ng-click="signOut()")
               | #{ __("UserAction.SignOut") }
@@ -55,7 +54,4 @@ html
     script(src="/js/maps.js")
     script(src="/js/modules/admin/module.js")
     script(src="/js/modules/business/module.js")
-    script(src="/js/modules/user/module.js")
-    script(src="/js/modules/user/controllers/auth.js")
-    script(src="/js/modules/admin/module.js")
     // SCRIPTS END

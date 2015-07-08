@@ -60,8 +60,7 @@ module.exports.routes = {
   *                                User routes                               *
   ***************************************************************************/
   'get /user/:userid': 'UserController.getProfile',
-  'patch /user/:userid': 'UserController.update',
-  'patch /user/:userid/role': 'UserController.changeRole',
+  'put /user/:userid': 'UserController.update',
   'delete /user/:userid': 'UserController.destroy',
 
   /***************************************************************************
@@ -69,7 +68,7 @@ module.exports.routes = {
   ***************************************************************************/
   'post /local': 'LocalController.create',
   'get /local/:localid': 'LocalController.getProfile',
-  'patch /local/:localid': 'LocalController.update',
+  'put /local/:localid': 'LocalController.update',
   'delete /local/:localid': 'LocalController.destroy',
 
   /***************************************************************************
@@ -78,7 +77,7 @@ module.exports.routes = {
   'post /review': 'ReviewController.postReview',
   'get /review': 'ReviewController.getReviews',
   'delete /review': 'ReviewController.destroy',
-  'patch /review/:reviewid': 'ReviewController.update',
+  'put /review/:reviewid': 'ReviewController.update',
 
   /***************************************************************************
   *                              Business routes                             *
@@ -86,7 +85,7 @@ module.exports.routes = {
   'get /business/create': 'BusinessController.createView',
   'post /business/:businessid': 'BusinessController.create',
   'get /business/:businessid': 'BusinessController.getProfile',
-  'patch /business/:businessid': 'BusinessController.update',
+  'put /business/:businessid': 'BusinessController.update',
   'delete /business/:businessid': 'BusinessController.destroy',
   'get /business/:businessid/locals': 'BusinessController.getLocals'
 

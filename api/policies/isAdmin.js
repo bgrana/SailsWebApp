@@ -1,5 +1,5 @@
 module.exports = function (req, res, next) {
-    if (req.param('role') === 'admin' && req.user.role !== 'admin') {
+    if (!req.user.is_staff) {
         return res.forbidden('Only an admin user can give admin priviledges.');
     }
 

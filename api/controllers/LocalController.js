@@ -44,16 +44,15 @@ module.exports = {
         var bodyParams = req.body;
         var id = req.param('localid');
 
-        if (bodyParams.length > 0) {
-
-            Local.update({id: id}, bodyParams).exec(function (err, local) {
-                if (err) return res.json(400, {error: err});
-
-                return res.json(200, local);
-            });
+        if (bodyParams.length === 0) {
+            return res.json(200, {message: "No parameters were given"});
         }
 
-        return res.json(200, {message: "No parameters were given"});
+        Local.update({id: id}, bodyParams).exec(function (err, local) {
+            if (err || local.length === 0) return res.json(400, {error: err});
+
+            return res.json(200, local[0]);
+        });
     },
 
     getProfile: function (req, res) {
