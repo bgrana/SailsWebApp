@@ -1,17 +1,35 @@
 extends ../layout
 
 block title
-  | #{ __("Admin.ListView.Title") }
+  | #{ __("Admin.Panel.Name") }
 
-block content
-  .container
-    .row
-      .col-sm-6.col-sm-offset-3
-        #accordion2.accordion(ng-app="AdminModule")
-          .accordion-group(ng-controller="UserController")
-            .accordion-heading
-              a.accordion-toggle(data-toggle='collapse', data-parent='#accordion2', href='#collapseOne')
-                | #{ __("Admin.Users") }
-            #collapseOne.accordion-body.collapse.in
-              .accordion-inner
-                include ../includes/admin/userList.jade
+block content    
+  div
+    .container
+      .row
+        .col-sm-10.col-sm-offset-1
+          #accordion.panel-group(role='tablist', aria-multiselectable='true')
+          .panel.panel-info
+            #headingUsers.panel-heading(role='tab')
+              h4.panel-title
+                a(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseUsers', aria-expanded='false', aria-controls='collapseUsers')
+                  | #{ __("Admin.Users") }
+            #collapseUsers.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingUsers')
+              .panel-body(ng-controller='UserController as uc')
+                include ../includes/admin/userList.jade   
+          .panel.panel-info
+            #headingLocals.panel-heading(role='tab')
+              h4.panel-title
+                a.collapsed(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseLocals', aria-expanded='false', aria-controls='collapseLocals')
+                  | #{ __("Admin.Locals") }
+            #collapseLocals.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingLocals')
+              .panel-body(ng-controller='LocalController as lc')
+                include ../includes/admin/localList.jade      
+          .panel.panel-info
+            #headingBusinesses.panel-heading(role='tab')
+              h4.panel-title
+                a.collapsed(role='button', data-toggle='collapse', data-parent='#accordion', href='#collapseBusinesses', aria-expanded='false', aria-controls='collapseBusinesses')
+                  | #{ __("Admin.Business") }
+            #collapseBusinesses.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingBusinesses')
+              .panel-body(ng-controller='BusinessController as bc')
+                include ../includes/admin/businessList.jade

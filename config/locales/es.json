@@ -21,11 +21,16 @@
   "Admin.Locals": "Lugares",
   "Admin.Business": "Comercios",
   "Admin.Update": "Actualizar",
+  "Admin.NewUser": "Añadir Usuario",
+  "Admin.Delete": "Eliminar",
   "Local.Name": "Nombre",
   "Local.Address": "Dirección",
   "Local.Location": "Ubicación",
   "Business.Name": "Nombre",
   "Business.Cif": "CIF",
   "UserAction.SignIn": "Iniciar sesión",
-  "UserAction.SignOut": "Cerrar sesión"
+  "UserAction.SignOut": "Cerrar sesión",
+  "User.Email": "Email",
+  "User.Username": "Nombre de Usuario",
+	"UserAction.GoDetailView": "Perfil"
 }

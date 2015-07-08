@@ -1,32 +1,76 @@
-div(ng-repeat='user in UserController.users')
-  form(name="editUserForm", ng-submit="signIn(signInModel.user)", novalidate)
-    .form-group
-      label.sr-only(for='inputUserName') 
-        | #{ __("FormField.Username") }
-      .col-sm-10
-        input#inputUserName.form-control(type='text', placeholder="#{user.username}")
-    .form-group
-      label.sr-only(for='inputFirstName')
-        | #{ __("FormField.FirstName") }
-      .col-sm-10
-        input#inputFirstName.form-control(type='text', placeholder="{{user.firstName}}")
-    .form-group
-      label.sr-only(for='inputLastName') 
-        | #{ __("FormField.LastName") }
-      .col-sm-10
-        input#inputLastName.form-control(type='text', placeholder="{{user.lastName}}")
-    .form-group
-      label.sr-only(for='inputEmail') 
-        | #{ __("FormField.Email") }
-      .col-sm-10
-        input#inputEmail.form-control(type='email', placeholder="{{user.email}}")
-    .form-group
-      label.sr-only(for='inputStaff') 
-        | #{ __("FormField.Staff") }
-      .col-sm-10
-        input#inputStaff.form-control(type='boolean', placeholder="{{user.is_staff}}")
-    // Update Button
-    .form-group
-      .col-sm-offset-2.col-sm-10
-        button.btn.btn-default(type='submit' ng-disabled="!signUpForm.$valid") 
-        | #{ __("Admin.Update") }
+#accordionDelete.panel-group(role='tablist', aria-multiselectable='true')
+.panel.panel-success
+  #headingDelete.panel-heading(role='tab')
+    h4.panel-title
+      a(role='button', data-toggle='collapse', data-parent='#accordionDelete', href='#collapseDelete', aria-expanded='false', aria-controls='collapseDelete')
+        | #{ __("Admin.NewUser") }
+  #collapseDelete.panel-collapse.collapse(role='tabpanel', aria-labelledby='headingDelete')
+    .panel-body(ng-controller='UserController as uc')
+      include ./addUserForm.jade
+div(ng-repeat='user in uc.users').col-sm-12
+  #accordionUser.panel-group(role='tablist', aria-multiselectable='true')
+  .panel.panel-default
+    #headingOne.panel-heading(role='tab')
+      h4.panel-title
+        a(role='button', data-toggle='collapse', data-parent='#accordionUser', href='#collapse{{$index}}', aria-expanded='false', aria-controls='collapse{{$index}}')
+          | #{ __("User.Email") }: {{user.email}}, #{ __("User.Username") }: {{user.username}}
+    div(id='collapse{{$index}}').panel-collapse.collapse(role='tabpanel', aria-labelledby='headingOne')
+        .panel-body
+          form(name="editUserForm", ng-submit="updateUser(user)", novalidate)
+            .form-group
+              label( for='inputUserName') 
+                | #{ __("FormField.Username") }
+              .col-sm-10
+                input#inputUserName.form-control(
+                  type='text',
+                  ng-model='user.username',
+                  value='{{user.username}}',
+                  required
+                )
+            .form-group
+              label(for='inputFirstName')
+                | #{ __("FormField.FirstName") }
+              .col-sm-10
+                input#inputFirstName.form-control(
+                  type='text',
+                  value='{{user.firstName}}',
+                  ng-model="user.firstName",
+                  required
+                )
+            .form-group
+              label(for='inputLastName') 
+                | #{ __("FormField.LastName") }
+              .col-sm-10
+                input#inputLastName.form-control(
+                  type='text', 
+                  value='{{user.lastName}}',
+                  ng-model="user.lastName",
+                  required
+                )
+            .form-group
+              label(for='inputEmail') 
+                | #{ __("FormField.Email") }
+              .col-sm-10
+                input#inputEmail.form-control(
+                  type='email', 
+                  value='{{user.email}}',
+                  ng-model="user.email",
+                  required
+                )
+            .form-group
+              label(for='inputStaff') 
+                | #{ __("FormField.Staff") }
+              .col-sm-10
+                input#inputStaff.form-control(
+                  type='boolean', 
+                  value='{{user.is_staff}}',
+                  ng-model="user.is_staff",
+                  required
+                )
+            .form-group
+              .col-sm-offset-2.col-sm-8
+                button.btn.btn-success(type='submit' ng-disabled="!editUserForm.$valid") 
+                  | #{ __("Admin.Update") }
+                button.btn.btn-danger(type='button' ng-click="destroyUser(user)")
+                  span.fa.fa-trash
+                  |  #{ __("Admin.Delete") }

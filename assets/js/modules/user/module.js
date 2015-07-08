@@ -1,5 +1,4 @@
-
-angular.module('UserModule', ['BusinessModule'])
+angular.module('UserModule', ['AdminModule', 'BusinessModule'])
   .controller('AuthController', ['$scope', '$http', '$element', function ($scope, $http, $element) {
 
     $scope.$alert = $('<div>').addClass('alert alert-danger');
