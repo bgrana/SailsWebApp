@@ -11,6 +11,10 @@ module.exports = {
         res.view('user/profile');
     },
 
+    profileView: function (req, res) {
+        res.view('user/detail');
+    },
+
     update: function (req, res) {
         var bodyParams = req.body;
         var id = req.param('userid');

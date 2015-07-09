@@ -59,7 +59,10 @@ module.exports.routes = {
   /***************************************************************************
   *                                User routes                               *
   ***************************************************************************/
+  'get /profile': 'UserController.profileView',
+
   'get /user/:userid': 'UserController.getProfile',
+
   'put /user/:userid': 'UserController.update',
   'delete /user/:userid': 'UserController.destroy',
 

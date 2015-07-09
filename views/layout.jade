@@ -21,6 +21,8 @@ html
 
         if user
           .navbar-form.navbar-right.btn-group(ng-controller="AuthController")
+            a.btn.btn-warning(href="/business/create")
+              |  #{ __("UserAction.GoBusinessView") }
             button.btn.btn-default.dropdown-toggle(type="button", data-toggle="dropdown")
               span.fa.fa-user
               |  #{ user.fullName() } 

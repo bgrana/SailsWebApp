@@ -4,3 +4,19 @@ block title
   | #{ __("DetailView.Title") }
 
 block content
+  .container
+    .row
+      .col-xs-12.col-sm-8.col-sm-offset-2.col-md-6.col-md-offset-4
+        .panel.panel-default
+          .panel-body
+            h3
+              strong
+                | #{ __("ProfileView.UserTitle") }
+            hr
+            dl.dl-horizontal
+              dt Nombre completo
+              dd #{ user.fullName() }
+              dt Nombre de usuario
+              dd #{ user.username }
+              dt E-mail
+              dd #{ user.email }

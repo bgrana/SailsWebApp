@@ -38,5 +38,8 @@
   "UserAction.SignOut": "Cerrar sesión",
   "User.Email": "Email",
   "User.Username": "Nombre de Usuario",
-	"UserAction.GoDetailView": "Ir a perfil"
+	"UserAction.GoDetailView": "Ir a perfil",
+  "DetailView.Title": "Cuenta del usuario",
+  "ProfileView.UserTitle": "Información de la cuenta",
+  "UserAction.GoBusinessView": "Nueva empresa"
 }
