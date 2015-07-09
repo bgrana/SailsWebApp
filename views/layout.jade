@@ -8,15 +8,7 @@ html
       block title
 
     // STYLES
-    link(rel="stylesheet", href="/styles/bootstrap.css")
-    link(rel="stylesheet", href="/styles/font-awesome.css")
-    link(rel="stylesheet", href="/styles/importer.css")
-    link(rel="stylesheet", href="/styles/mapStyles.css")
     // STYLES END
-
-    // TEMPLATES
-    
-    // TEMPLATES END
 
   body(ng-app="UserModule")
     .navbar.navbar-inverse.navbar-static-top
@@ -30,35 +22,33 @@ html
         if user
           .navbar-form.navbar-right.btn-group(ng-controller="AuthController")
             button.btn.btn-default.dropdown-toggle(type="button", data-toggle="dropdown")
-               span.caret
-               |  #{ user.fullName() }
+              span.fa.fa-user
+              |  #{ user.fullName() } 
+              span.caret
             ul.dropdown-menu
               if user.is_staff
                 li
                   a(href="/admin")
-                    | #{ __("UserAction.GoAdminView") }
+                    |  #{ __("UserAction.GoAdminView") }
               li
                 a(href="/profile")
-                  | #{ __("UserAction.GoDetailView") }
+                  span.fa.fa-cog.fa-fw
+                  | &nbsp; #{ __("UserAction.GoDetailView") }
               li
                 a(href="#", ng-click="signOut()")
-                  | #{ __("UserAction.SignOut") }
+                  span.fa.fa-sign-in.fa-fw
+                  | &nbsp; #{ __("UserAction.SignOut") }
 
     block content
+
+    .container
+      hr
+      footer
+        span Copyright (c) 2015 Universidad Politecnica de Madrid
 
     script(src="https://maps.googleapis.com/maps/api/js?libraries=places")
     //script(type='text/ng-template', id='searchbox.html').
       <input type="text" placeholder="Search Box">
 
     // SCRIPTS
-    script(src="/js/dependencies/sails.io.js")
-    script(src="/js/dependencies/jquery.js")
-    script(src="/js/dependencies/bootstrap.js")
-    script(src="/js/dependencies/angular.js")
-    script(src="/js/dependencies/lodash.js")
-    script(src="/js/dependencies/angular-google-maps.js")
-    script(src="/js/modules/user/module.js")
-    script(src="/js/maps.js")
-    script(src="/js/modules/admin/module.js")
-    script(src="/js/modules/business/module.js")
     // SCRIPTS END

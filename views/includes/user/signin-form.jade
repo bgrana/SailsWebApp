@@ -5,7 +5,8 @@ form(name="signInForm", ng-submit="signIn(signInModel)", novalidate)
       name="username",
       placeholder=__("FormField.UsernameOrEmail"),
       ng-model="signInModel.username",
-      required
+      required,
+      autofocus
     )
   .form-group
     input.form-control(

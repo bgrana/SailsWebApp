@@ -10,10 +10,16 @@
   "FormField.Password": "Contraseña",
   "FormField.ConfirmPassword": "Confirmar contraseña",
   "FormField.Staff": "Administrador",
+  "AppBrand": "DAW13",
+  "HomeView.Title": "Lo mejor de tu zona",
+  "AppBrand.Title": "Bienvenido a DAW13",
+  "AppBrand.Description": "Una aplicación web para registrar y buscar restaurantes, bares o cualquier otro tipo de tiendas.",
+  "SignUpView.Title": "Create una cuenta ahora",
+  "SignUpView.Subtitle": "Y conoce mejor tu zona",
   "User.RegView.Title": "Crear cuenta - WAD",
   "User.SignInView.Title": "Iniciar sesión - WAD",
   "Action.SignIn": "Iniciar sesión",
-  "Action.SignUp": "Crear cuenta",
+  "UserAction.SignUp": "Crear cuenta",
   "Action.SignOut": "Cerrar sesión",
   "Action.GoProfilePage": "Ir a perfil",
   "Action.GoAdminPage": "Ir a recursos",
@@ -32,5 +38,5 @@
   "UserAction.SignOut": "Cerrar sesión",
   "User.Email": "Email",
   "User.Username": "Nombre de Usuario",
-	"UserAction.GoDetailView": "Perfil"
+	"UserAction.GoDetailView": "Ir a perfil"
 }

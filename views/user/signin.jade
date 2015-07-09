@@ -11,7 +11,16 @@ block navbar-content
 block content
   .container
     .row
-      .col-sm-4.col-sm-offset-4
-        .panel.panel-default
-          .panel-body(ng-controller="AuthController")
-            include ../includes/user/signin-form.jade
+      .col-xs-12
+        .jumbotron
+          .container
+            .row
+              .col-xs-12.col-md-7
+                h2.text-info
+                  | #{ __("AppBrand.Title") }
+                p
+                  | #{ __("AppBrand.Description") }
+              .col-xs-12.col-md-5
+                .panel.panel-default
+                  .panel-body(ng-controller="AuthController")
+                    include ../includes/user/signin-form.jade
