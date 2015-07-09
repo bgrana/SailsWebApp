@@ -2,3 +2,38 @@ extends ./layout
 
 block title
   | #{ __("HomeView.Title") }
+
+  .container(ng-controller="HomeController as home")
+    .row
+      .col-sm-4
+        .panel.panel-default
+          .panel-body
+            h3
+              strong
+                | #{ __("HomeView.NearestLocals") }
+            hr
+            .list-group
+              a.list-group-item(href='#', ng-class='{ active: local.active }', ng-click='home.showLocal($index)', ng-repeat='local in home.locals')
+                h4.list-group-item-heading
+                  span.fa.fa-map-marker
+                  |  {{ local.name }}
+                p.list-group-item-text {{ local.address }}
+      .col-sm-8
+        .panel.panel-default
+          .panel-body
+            // google-map ¿¿??
+    .row
+      .col-sm-5
+        .panel.panel-default(ng-show='local.active', ng-repeat="local is home.locals")
+          .panel-body
+            h3
+              strong
+                | #{ __("HomeView.Local") }
+            hr
+            dl.dl-horizontal
+              dt Name
+              dd {{ local.name }}
+              dt Address
+              dd {{ local.address }}
+              dt Category
+              dd {{ local.category }}

@@ -36,4 +36,16 @@ angular.module('UserModule', ['AdminModule', 'BusinessModule'])
         });
     };
 
+  }])
+  .controller('HomeController', ['$scope', '$http', '$element', function ($scope, $http, $element) {
+
+      $scope.locals = [];
+
+      $http.get('/local')
+        .success(function (locals) {
+          $scope.locals = locals;
+        })
+        .error(function (errorMessage) {
+        });
+
   }]);

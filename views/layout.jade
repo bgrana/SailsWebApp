@@ -28,14 +28,21 @@ html
         block navbar-content
 
         if user
-          .navbar-btn.btn-group.pull-right(ng-controller="AuthController")
-            if !user.is_staff
-              a.btn.btn-default(href="/admin")
-                | #{ __("UserAction.GoAdminView") }
-            a.btn.btn-default(href="/user/#{user.id}")
-              | #{ __("UserAction.GoDetailView") }
-            button.btn.btn-default(type="button", ng-click="signOut()")
-              | #{ __("UserAction.SignOut") }
+          .navbar-form.navbar-right.btn-group(ng-controller="AuthController")
+            button.btn.btn-default.dropdown-toggle(type="button", data-toggle="dropdown")
+               | #{ user.full_name() }
+               span.caret
+            ul.dropdown-menu
+              if !user.is_staff
+                li
+                  a(href="/admin")
+                    | #{ __("UserAction.GoAdminView") }
+              li
+                a(href="/profile")
+                  | #{ __("UserAction.GoDetailView") }
+              li
+                a(href="#", ng-click="signOut()")
+                  | #{ __("UserAction.SignOut") }
 
     block content
 
