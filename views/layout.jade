@@ -30,10 +30,10 @@ html
         if user
           .navbar-form.navbar-right.btn-group(ng-controller="AuthController")
             button.btn.btn-default.dropdown-toggle(type="button", data-toggle="dropdown")
-               | #{ user.full_name() }
                span.caret
+               |  #{ user.fullName() }
             ul.dropdown-menu
-              if !user.is_staff
+              if user.is_staff
                 li
                   a(href="/admin")
                     | #{ __("UserAction.GoAdminView") }

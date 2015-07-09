@@ -44,9 +44,9 @@ block content
                         option(value='', disabled='') Select category
                         option(value='bar') Bar
                         option(value='restaurant') Restaurant
-                    .form-group
-                      input.map-input(id="search-container", type='text', ng-model='storeCreateModel.address', placeholder='Enter a street address', required)
-                    //ui-gmap-google-map(center="map.center", zoom="map.zoom", draggable="true")
+                    input(id="searchContainer", type='text', ng-model='storeCreateModel.address', placeholder='Enter a street address', required='')
+                    .angular-google-map-container(id="mapContainer")
+                    //ui-gmap-google-map(center="map.center", zoom="map.zoom", draggable="true", control="map.control")
                     //  ui-gmap-search-box()
                     //  ui-gmap-marker(coords="marker.coords", options="marker.options", events="marker.events", idkey="marker.id")
                     .text-right

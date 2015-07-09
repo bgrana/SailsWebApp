@@ -9,7 +9,7 @@ module.exports = {
 
     types: {
         is_location: function (location) {
-            return location.lat && location.long;
+            return location.A && location.F;
         }
     },
 
@@ -33,7 +33,7 @@ module.exports = {
 
         location: {
             type: 'json',
-            //required: true,
+            required: true,
             is_location: true
         },
 

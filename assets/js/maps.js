@@ -83,7 +83,7 @@ var Maps = (function () {
     }
 
     Maps.prototype.getCoords = function () {
-        this.markers[0].position;
+        return this.markers[0].position;
     }
 
     return Maps;

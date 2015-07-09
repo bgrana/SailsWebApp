@@ -44,4 +44,5 @@ block content
               dd {{ store.address }}
               dt Category
               dd {{ store.category }}
-            ui-gmap-google-map.angular-google-map-container(center='map.center' zoom='map.zoom', control='map.control')
+            ui-gmap-google-map.angular-google-map-container(center='map.center', zoom='map.zoom', control='map.control')
+              ui-gmap-marker(coords="marker.coords", options="marker.options", events="marker.events", idkey="marker.id")

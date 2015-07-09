@@ -7,6 +7,9 @@
             $scope.storeCreateModel = {};
             $scope.step2Completed = false;
 
+            var map = new Maps(document.getElementById('mapContainer'), document.getElementById('searchContainer'));
+            map.create();
+
             $scope.createBusiness = function (business) {
 
                 $http
@@ -25,6 +28,7 @@
             $scope.createStore = function (store) {
 
                 store.owner = $scope.business;
+                store.location = map.getCoords();
                 $http
                     .post('/local', store)
                     .success(function (data) {
@@ -54,7 +58,11 @@
     app.controller('BusinessListController', ['$scope', '$http', '$element', '$interpolate', function ($scope, $http, $element, $interpolate) {
 
         $scope.businessId = $element.attr('data-id');
-        $scope.map = { center: { latitude: 40.4143946, longitude: -3.8444746 }, zoom: 15, control: {} };
+        $scope.map = { center: { latitude: 40.4143946, longitude: -3.8444746 }, zoom: 18, control: {} };
+        
+        $scope.marker = {
+          id: 0
+        };
 
         $http.get('/business/' + $scope.businessId)
             .success(function(data) {
@@ -62,9 +70,15 @@
 
                 data.locals.forEach(function (store, index) {
                     store.active = index == 0;
-                    //store.center = { latitude: store.location.lat, longitude: store.location.lng };
+                    //store.center = { latitude: 40.5, longitude: -3.9 }
+                    store.center = { latitude: store.location.A, longitude: store.location.F };
                 });
                 $scope.stores = data.locals;
+                $scope.map.center = $scope.stores[0].center;
+                $scope.marker.coords = {
+                    latitude: $scope.stores[0].center.latitude,
+                    longitude: $scope.stores[0].center.longitude
+                };
             })
             .error(function(data) {
             });
@@ -73,7 +87,11 @@
             $scope.stores.forEach(function (store, index) {
                 store.active = index == $index;
             });
-            //$scope.map.control.refresh($scope.stores[$index].center);
+            $scope.map.control.refresh($scope.stores[$index].center);
+            $scope.marker.coords = {
+                latitude: $scope.stores[$index].center.latitude,
+                longitude: $scope.stores[$index].center.longitude
+            };
         };
 
     }]);

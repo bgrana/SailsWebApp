@@ -14,13 +14,11 @@ module.exports = {
         var owner = req.param('owner');
         var category = req.param('category');
         var userId = req.user.id;
-        console.log("OWNER: " + JSON.stringify(owner));
         
         Business.find({cif: owner.cif}).populate('owner').exec(function (err, business) {
             if (err) return res.json(404, {error: err});
 
-            console.log("BUSINESS OWNER: " + JSON.stringify(business));
-            if (userId !== owner.owner) {
+            if (userId !== owner.owner && !req.user.is_staff) {
                 return res.json(401, {error: "User not allowed to create locals in this business"});
             }
 
