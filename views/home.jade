@@ -4,7 +4,7 @@ block title
   | #{ __("HomeView.Title") }
 
 block content
-  .container(ng-controller="HomeController as home")
+  .container(ng-controller="HomeController")
     .row
       .col-sm-4
         .panel.panel-default
@@ -14,7 +14,7 @@ block content
                 | #{ __("HomeView.NearestLocals") }
             hr
             .list-group
-              a.list-group-item(href='#', ng-class='{ active: local.active }', ng-click='home.showLocal($index)', ng-repeat='local in home.locals')
+              a.list-group-item(href='#', ng-class='{ active: local.active }', ng-click='showLocal($index)', ng-repeat='local in locals')
                 h4.list-group-item-heading
                   span.fa.fa-map-marker
                   |  {{ local.name }}
@@ -22,10 +22,11 @@ block content
       .col-sm-8
         .panel.panel-default
           .panel-body
-            // google-map ¿¿??
+            ui-gmap-google-map.angular-google-map-container(center='map.center', zoom='map.zoom', control='map.control', markers='map.markers')
+              ui-gmap-marker(coords="marker.coords", options="marker.options", events="marker.events", idkey="marker.id", ng-repeat="marker in map.markers")
     .row
       .col-sm-5
-        .panel.panel-default(ng-show='local.active', ng-repeat="local is home.locals")
+        .panel.panel-default(ng-show='local.active', ng-repeat="local in locals")
           .panel-body
             h3
               strong
